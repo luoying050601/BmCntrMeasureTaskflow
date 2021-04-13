@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.61.92" id="DataBindings" SeparateXMLFiles="false"
+             Package="cn.com.cscec8b.bm.cntrmeasure.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureApplyDetailQuery.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyDetailQueryPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureApplyQuery.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyQueryPageDef1"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureApplyDetail.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyDetailPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureDetailQuery.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureDetailQueryPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureCheckQuery.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureCheckQueryPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureCheck.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrVerifyCheckPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureCheckDetail.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureCheckDetailPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureConfirm.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureConfirm.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmPageDef1"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureConfirmQuery.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmQueryPageDef"/>
+    <page path="/WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-approval-taskflow.xml#bm-cntr-measure-approval-taskflow@queryBmCntrMeasureByHeaderId"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_bm_cntr_measure_approval_taskflow_bm_cntr_measure_approval_taskflow_queryBmCntrMeasureByHeaderIdPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureApproval.jsff"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApprovalPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureApproval.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApprovalPageDef1"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureConfirmHistory.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmHistoryPageDef"/>
+    <page path="/cn/com/cscec8b/bm/cntrmeasure/view/pages/cntrMeasureEdit.jspx"
+          usageId="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureEditPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyDetailQueryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureApplyDetailQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyQueryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureApplyQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyQueryPageDef1"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureApplyQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyDetailPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureApplyDetailPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureDetailQueryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureDetailQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureCheckQueryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureCheckQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrVerifyCheckPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrVerifyCheckPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApplyPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureApplyPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureCheckDetailPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureCheckDetailPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureConfirmPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmPageDef1"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureConfirmPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmQueryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureConfirmQueryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_bm_cntr_measure_approval_taskflow_bm_cntr_measure_approval_taskflow_queryBmCntrMeasureByHeaderIdPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.taskflows.bm_cntr_measure_approval_taskflow_bm_cntr_measure_approval_taskflow_queryBmCntrMeasureByHeaderIdPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApprovalPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.fragments.cntrMeasureApprovalPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureApprovalPageDef1"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureApprovalPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureConfirmHistoryPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureConfirmHistoryPageDef"/>
+    <page id="cn_com_cscec8b_bm_cntrmeasure_view_cntrMeasureEditPageDef"
+          path="cn.com.cscec8b.bm.cntrmeasure.view.pages.cntrMeasureEditPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="CntrMeasureAMDataControl"
+                     Package="cn.com.cscec8b.bm.cntrmeasure.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="CntrMeasureAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureApplyDetailQueryPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrMeasureQuery1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrMeasureQuery1Iterator"/>
+    <searchRegion Criteria="BmCntrMeasureQueryVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrMeasureQuery1Iterator"
+                  id="BmCntrMeasureQueryVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BmCntrMeasureQuery1Iterator" id="BmCntrMeasureQuery1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureQueryVO"
+                      Name="BmCntrMeasureQuery10">
+        <AttrNames>
+          <Item Value="ProjectNumber"/>
+          <Item Value="ProjectName"/>
+          <Item Value="CntrListLineId"/>
+          <Item Value="ContactNumber"/>
+          <Item Value="ContactName"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ListName"/>
+          <Item Value="CntrListName"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="CostAccountType"/>
+          <Item Value="Description"/>
+          <Item Value="CntrListUomCode"/>
+          <Item Value="EngineeringQuantity"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="MeasureAmount"/>
+          <Item Value="TaskId"/>
+          <Item Value="TaskName"/>
+          <Item Value="TaskNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="BmCntrMeasureQuery1Iterator"
+                     id="CurrentMeasureAmount">
+      <AttrNames>
+        <Item Value="CurrentMeasureAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="countAllMeasureAmount"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="countAllMeasureAmount" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.countAllMeasureAmount_CntrMeasureAMDataControl_dataProvider_countAllMeasureAmount_result">
+      <NamedData NDName="cntrId" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

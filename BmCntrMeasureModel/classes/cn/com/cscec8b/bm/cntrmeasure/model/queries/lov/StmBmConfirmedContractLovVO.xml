@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StmBmConfirmedContractLovVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="cn.com.cscec8b.framework.model.common.CustomViewRowImpl"
+  ComponentClass="cn.com.cscec8b.framework.model.common.CustomViewObjectImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomViewDefImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bvProjectId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.pageFlowScope.currentLoginUser.projectId]]></TransientExpression>
+  </Variable>
+  <SQLQuery>
+    <![CDATA[select k_header_id        as contract_id,
+       k_number           as contract_number,
+       schv.K_ALIAS       as contract_name,
+       project_id         as project_id,
+       project_number     as project_number,
+       k_type_code        as contract_type_code,
+       k_type             as contract_type,
+       authoring_org_id   as org_id,
+       authoring_org      as org_name,
+       status_code        as status,
+       socc.customer_id,
+       socc.customer_name,
+       project_name       as project_name,
+       schv.K_VALUE,
+       (select  t.tax_rate
+          from bm.bm_cntr_list_header_t t
+         where  T.CNTR_ID = CNTR.CNTR_ID
+         AND ROWNUM = 1
+         ) as  tax_rate
+  from (select distinct t.cntr_id
+          from bm.bm_cntr_list_header_t t
+         where t.status in ('CONFIRMED','CLOSED')) cntr,
+       stm.stm_contract_headers_v schv,
+       stm.stm_oke_ctr_customers_v socc
+where cntr.cntr_id = schv.K_HEADER_ID(+)
+   and cntr.cntr_id = socc.contract_id(+)
+  and schv.STATUS_CODE  in ('EXECUTE','CUT','STOP','SUMMARY')
+  AND SCHV.PRIME_K_NUMBER IS NULL
+  and schv.project_id = :bvProjectId]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ContractId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CONTRACT_ID"
+    Expression="CONTRACT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContractNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="120"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONTRACT_NUMBER"
+    Expression="CONTRACT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="120"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.ContractNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.ContractNumber_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContractName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="300"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONTRACT_NAME"
+    Expression="CONTRACT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.ContractName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.ContractName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PROJECT_ID"
+    Expression="PROJECT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROJECT_NUMBER"
+    Expression="PROJECT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContractTypeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONTRACT_TYPE_CODE"
+    Expression="CONTRACT_TYPE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContractType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="80"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONTRACT_TYPE"
+    Expression="CONTRACT_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID"
+    Expression="ORG_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORG_NAME"
+    Expression="ORG_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CUSTOMER_ID"
+    Expression="CUSTOMER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="16"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="360"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NAME"
+    Expression="CUSTOMER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="360"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.CustomerName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.CustomerName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROJECT_NAME"
+    Expression="PROJECT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="KValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="K_VALUE"
+    Expression="K_VALUE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TAX_RATE"
+    Expression="TAX_RATE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="StmBmConfirmedContractLovVOCriteria"
+    ViewObjectName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow80"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ContractNumber"
+        ViewAttribute="ContractNumber"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ContractName"
+        ViewAttribute="ContractName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CustomerName"
+        ViewAttribute="CustomerName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

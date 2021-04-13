@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BmCntrConfirmVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVORowImpl"
+  ComponentClass="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVOImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomViewDefImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bvProjectId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.pageFlowScope.currentLoginUser.projectId]]></TransientExpression>
+  </Variable>
+  <ViewAccessor
+    Name="StmCustomersAndSitsLovVO1"
+    ViewObjectName="cn.com.cscec8b.common.model.queries.lovs.StmCustomersAndSitsLovVO">
+    <ViewCriteriaUsage
+      Name="Normal"
+      FullName="cn.com.cscec8b.common.model.queries.lovs.StmCustomersAndSitsLovVO.Normal"/>
+    <ParameterMap>
+      <PIMap Variable="bvOrgId">
+        <TransientExpression><![CDATA['107']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="StatusLookupLovVO1"
+    ViewObjectName="cn.com.cscec8b.common.model.queries.lovs.StmLookupLovVO">
+    <ViewCriteriaUsage
+      Name="byLookupTypeVC"
+      FullName="cn.com.cscec8b.common.model.queries.lovs.StmLookupLovVO.byLookupTypeVC"/>
+    <ParameterMap>
+      <PIMap Variable="bvLookupType">
+        <TransientExpression><![CDATA['BM_CNTR_FIN_CONFIRM_STATUS']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="BmCntrCustomersLovVO1"
+    ViewObjectName="cn.com.cscec8b.common.model.queries.lovs.BmCntrCustomersLovVO">
+    <ViewCriteriaUsage
+      Name="BmCntrCustomersLovVOCriteria"
+      FullName="cn.com.cscec8b.common.model.queries.lovs.BmCntrCustomersLovVO.BmCntrCustomersLovVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="bvProjectId">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.currentLoginUser.projectId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="StmBmConfirmedContractLovVO1"
+    ViewObjectName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO">
+    <ViewCriteriaUsage
+      Name="StmBmConfirmedContractLovVOCriteria"
+      FullName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.StmBmConfirmedContractLovVO.StmBmConfirmedContractLovVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="bvProjectId">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.currentLoginUser.projectId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_TransferStatus"
+    ListVOName="StatusLookupLovVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TransferStatus"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomerName"
+    ListVOName="BmCntrCustomersLovVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CustomerName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomerName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustomerName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustomerNumber"/>
+      <Item Value="CustomerName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="BmCntrCustomersLovVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CntrName"
+    ListVOName="StmBmConfirmedContractLovVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CntrName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CntrName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ContractName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ContractNumber"/>
+      <Item Value="ContractName"/>
+      <Item Value="CustomerName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="StmBmConfirmedContractLovVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT *
+  FROM (SELECT T.*,
+               (OWER_CONFIRM_QUANTITY - ALREADY_CONFIRM_AMOUNT) AS LEFT_CONFIRM_AMOUNT
+          FROM (SELECT BMCNTRVERIFYHEADERTEO.CNTR_VERIFY_HEADER_ID,
+                       BMCNTRVERIFYHEADERTEO.PROJECT_ID,
+                       BMCNTRVERIFYHEADERTEO.CNTR_ID,
+                       SCH.K_NUMBER AS CNTR_NUMBER,
+                       BMCNTRVERIFYHEADERTEO.VERIFY_START_DATE,
+                       SCH.K_ALIAS AS CNTR_NAME,
+                       SCV.CUSTOMER_NAME,
+                       SCV.CUSTOMER_NUMBER,
+                       P.SEGMENT1 PROJECT_NUMBER,
+                       P.NAME AS PROJECT_NAME,
+                       BMCNTRVERIFYHEADERTEO.VERIFY_END_DATE,
+                       BMCNTRVERIFYHEADERTEO.DOCUMENT_NUMBER,
+                       BMCNTRVERIFYHEADERTEO.CUSTOMER_ID,
+                       BMCNTRVERIFYHEADERTEO.OWER_CONFIRM_QUANTITY,
+                       BMCNTRVERIFYHEADERTEO.ACTUAL_CONFIRM_DATE,
+                       NVL((SELECT SUM(CFC.CONFIRM_AMOUNT)
+                             FROM BM.BM_CNTR_FIN_CONFIRM_T CFC
+                           
+                            WHERE CFC.TRANSFER_STATUS = 'SUCCESS'
+                              AND BMCNTRVERIFYHEADERTEO.STATUS = 'CONFIRMED'
+                              AND CFC.CNTR_VERIFY_HEADER_ID =
+                                  BMCNTRVERIFYHEADERTEO.CNTR_VERIFY_HEADER_ID
+                            GROUP BY CFC.CNTR_VERIFY_HEADER_ID),
+                           0) AS ALREADY_CONFIRM_AMOUNT,
+                       0 AS CURRENT_TRANSFER_AMOUNT
+                  FROM BM.BM_CNTR_VERIFY_HEADER_T BMCNTRVERIFYHEADERTEO,
+                       STM.STM_PROJECTS_V         P,
+                       STM.STM_CONTRACT_HEADERS_V SCH,
+                       STM.STM_CUSTOMERS_V        SCV
+                 WHERE BMCNTRVERIFYHEADERTEO.PROJECT_ID = P.PROJECT_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.CNTR_ID = SCH.K_HEADER_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.CUSTOMER_ID = SCV.CUSTOMER_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.STATUS = 'CONFIRMED'
+                   AND BMCNTRVERIFYHEADERTEO.PROJECT_ID =  :bvProjectId
+                ) T
+        WHERE (OWER_CONFIRM_QUANTITY !=ALREADY_CONFIRM_AMOUNT) --> 0
+        
+         ORDER BY T.DOCUMENT_NUMBER DESC)
+
+UNION ALL
+
+SELECT *
+  FROM (SELECT T.*,
+               (OWER_CONFIRM_QUANTITY - ALREADY_CONFIRM_AMOUNT) AS LEFT_CONFIRM_AMOUNT
+          FROM (SELECT BMCNTRVERIFYHEADERTEO.CNTR_VERIFY_HEADER_ID,
+                       BMCNTRVERIFYHEADERTEO.PROJECT_ID,
+                       BMCNTRVERIFYHEADERTEO.CNTR_ID,
+                       SCH.K_NUMBER AS CNTR_NUMBER,
+                       BMCNTRVERIFYHEADERTEO.VERIFY_START_DATE,
+                       SCH.K_ALIAS AS CNTR_NAME,
+                       SCV.CUSTOMER_NAME,
+                       SCV.CUSTOMER_NUMBER,
+                       P.SEGMENT1 PROJECT_NUMBER,
+                       P.NAME AS PROJECT_NAME,
+                       BMCNTRVERIFYHEADERTEO.VERIFY_END_DATE,
+                       BMCNTRVERIFYHEADERTEO.DOCUMENT_NUMBER,
+                       BMCNTRVERIFYHEADERTEO.CUSTOMER_ID,
+                       BMCNTRVERIFYHEADERTEO.OWER_CONFIRM_QUANTITY,
+                       BMCNTRVERIFYHEADERTEO.ACTUAL_CONFIRM_DATE,
+                       NVL((SELECT SUM(CFC.CONFIRM_AMOUNT)
+                             FROM BM.BM_CNTR_FIN_CONFIRM_T CFC
+                           
+                            WHERE CFC.TRANSFER_STATUS = 'SUCCESS'
+                              AND BMCNTRVERIFYHEADERTEO.STATUS = 'CONFIRMED'
+                              AND CFC.CNTR_VERIFY_HEADER_ID =
+                                  BMCNTRVERIFYHEADERTEO.CNTR_VERIFY_HEADER_ID
+                            GROUP BY CFC.CNTR_VERIFY_HEADER_ID),
+                           0) AS ALREADY_CONFIRM_AMOUNT,
+                       0 AS CURRENT_TRANSFER_AMOUNT
+                  FROM BM.BM_CNTR_VERIFY_HEADER_T BMCNTRVERIFYHEADERTEO,
+                       STM.STM_PROJECTS_V         P,
+                       STM.STM_CONTRACT_HEADERS_V SCH,
+                       STM.STM_CUSTOMERS_V        SCV
+                 WHERE BMCNTRVERIFYHEADERTEO.PROJECT_ID = P.PROJECT_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.CNTR_ID = SCH.K_HEADER_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.CUSTOMER_ID = SCV.CUSTOMER_ID(+)
+                   AND BMCNTRVERIFYHEADERTEO.STATUS = 'CONFIRMED'
+                   AND BMCNTRVERIFYHEADERTEO.PROJECT_ID = :bvProjectId
+                ) T
+         WHERE (OWER_CONFIRM_QUANTITY - ALREADY_CONFIRM_AMOUNT) = 0
+         ORDER BY T.DOCUMENT_NUMBER DESC)]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="CntrVerifyHeaderId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CNTR_VERIFY_HEADER_ID"
+    Expression="CNTR_VERIFY_HEADER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PROJECT_ID"
+    Expression="PROJECT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CNTR_ID"
+    Expression="CNTR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CNTR_NUMBER"
+    Expression="CNTR_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="120"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CntrNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CntrNumber_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VerifyStartDate"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VERIFY_START_DATE"
+    Expression="VERIFY_START_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyStartDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyStartDate_FMT_FORMAT"/>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyStartDate_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyStartDate_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrName"
+    LOVName="LOV_CntrName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="300"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CNTR_NAME"
+    Expression="CNTR_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CntrName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CntrName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName"
+    LOVName="LOV_CustomerName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NAME"
+    Expression="CUSTOMER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CustomerName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CustomerName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NUMBER"
+    Expression="CUSTOMER_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROJECT_NUMBER"
+    Expression="PROJECT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROJECT_NAME"
+    Expression="PROJECT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VerifyEndDate"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VERIFY_END_DATE"
+    Expression="VERIFY_END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyEndDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyEndDate_FMT_FORMAT"/>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyEndDate_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.VerifyEndDate_TOOLTIP"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentNumber"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCUMENT_NUMBER"
+    Expression="DOCUMENT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.DocumentNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.DocumentNumber_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CUSTOMER_ID"
+    Expression="CUSTOMER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OwerConfirmQuantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="OWER_CONFIRM_QUANTITY"
+    Expression="OWER_CONFIRM_QUANTITY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.OwerConfirmQuantity_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.OwerConfirmQuantity_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActualConfirmDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ACTUAL_CONFIRM_DATE"
+    Expression="ACTUAL_CONFIRM_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.ActualConfirmDate_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.ActualConfirmDate_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AlreadyConfirmAmount"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ALREADY_CONFIRM_AMOUNT"
+    Expression="ALREADY_CONFIRM_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.AlreadyConfirmAmount_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.AlreadyConfirmAmount_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentTransferAmount"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CURRENT_TRANSFER_AMOUNT"
+    Expression="CURRENT_TRANSFER_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CurrentTransferAmount_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.CurrentTransferAmount_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeftConfirmAmount"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="LEFT_CONFIRM_AMOUNT"
+    Expression="LEFT_CONFIRM_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.LeftConfirmAmount_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.LeftConfirmAmount_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentLeftConfirmAmount"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CurrentAlreadyConfirmAmount"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CurrentAllTransferAmount"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CurrentOwerConfirmQuantity"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TransferStatus"
+    LOVName="LOV_TransferStatus"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.TransferStatus_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.TransferStatus_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FinConfirmDocumentNumber"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.FinConfirmDocumentNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO.FinConfirmDocumentNumber_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="BmCntrConfirmVOCriteria"
+    ViewObjectName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow30"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CntrId"
+        ViewAttribute="CntrId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="CntrName"
+        ViewAttribute="CntrName"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="1"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Required"/>
+      <ViewCriteriaItem
+        Name="CustomerNumber"
+        ViewAttribute="CustomerNumber"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CntrVerifyHeaderId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureApprovalPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+ <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrMeasureHeaderT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrMeasureHeaderT1Iterator"/>
+    <iterator Binds="BmCntrMeasureLineT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrMeasureLineT1Iterator"/>
+    <taskFlow id="bpmapprovalhistorytaskflow1"
+              taskFlowId="/WEB-INF/cn/com/cscec8b/bpm/history/view/taskflow/bpm-approval-history-taskflow.xml#bpm-approval-history-taskflow"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              activation="deferred">
+      <parameters>
+        <parameter id="TableName" xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                   value="BM.BM_CNTR_MEASURE_HEADER_T"/>
+        <parameter id="PriId" xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                   value="#{bindings.CntrMeasureHeaderId.inputValue}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="DocumentNumber">
+      <AttrNames>
+        <Item Value="DocumentNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="PreparedDate">
+      <AttrNames>
+        <Item Value="PreparedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="ProductionTotal">
+      <AttrNames>
+        <Item Value="ProductionTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="CntrMeasureAMDataControl"/>
+    <action id="Commit" DataControl="CntrMeasureAMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="BmCntrMeasureHeaderT1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status" DTSupportsMRU="true"/>
+    <list IterBinding="BmCntrMeasureHeaderT1Iterator" StaticList="false"
+          Uses="LOV_AccountFlag" id="AccountFlag" DTSupportsMRU="true"/>
+    <action IterBinding="BmCntrMeasureLineT1Iterator" id="CreateWithParams"
+            RequiresUpdateModel="true" Action="createWithParams">
+      <NamedData NDName="CntrMeasureHeaderId" NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.CntrMeasureHeaderId.inputValue}"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.LineNum.inputValue}"
+                 NDName="LineNum"/>
+      <NamedData NDValue="#{bindings.CntrListUomCode.inputValue}" NDName="CntrListUomCode"
+                 NDType="java.lang.String"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.CntrListNumber1.inputValue}"
+                 NDName="CntrListNumber"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.BudgetQuantity.inputValue}"
+                 NDName="BudgetQuantity"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.CumulativeQuantity.inputValue}"
+                 NDName="CumulativeQuantity"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.CompletionPercentage.inputValue}"
+                 NDName="CompletionPercentage"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.EngineeringQuantity.inputValue}"
+                 NDName="EngineeringQuantity"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.UnitPrice.inputValue}" NDName="UnitPrice"/>
+      <NamedData
+                 NDValue="#{bindings.TaskId.inputValue}" NDName="TaskId"
+                 NDType="java.lang.String"/>
+      <NamedData NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.MeasureAmount.inputValue}"
+                 NDName="MeasureAmount"/>
+      <NamedData NDName="ProductionProAmount" NDType="oracle.jbo.domain.Number"
+                 NDValue="#{bindings.ProductionAmount.inputValue}"/>
+    </action>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator" id="LineNum">
+      <AttrNames>
+        <Item Value="LineNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="MeasureAmount">
+      <AttrNames>
+        <Item Value="MeasureAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="CntrMeasureHeaderId">
+      <AttrNames>
+        <Item Value="CntrMeasureHeaderId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="ProjectNumber">
+      <AttrNames>
+        <Item Value="ProjectNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator" id="CntrName">
+      <AttrNames>
+        <Item Value="CntrName"/>
+      </AttrNames>
+    </attributeValues>
+  
+    <list IterBinding="BmCntrMeasureHeaderT1Iterator" StaticList="false"
+          Uses="LOV_CntrListNumber" id="CntrListNumber" DTSupportsMRU="true"/>
+    <methodAction id="queryAllCntrListLine"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="queryAllCntrListLine" IsViewObjectMethod="false">
+      <NamedData NDName="cntrListId" NDType="int"/>
+      <NamedData NDName="headerId" NDType="int"/>
+    </methodAction>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="PreparedByName">
+      <AttrNames>
+        <Item Value="PreparedByName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="BmCntrMeasureLineT1Iterator" id="CreateInsert"
+            InstanceName="CntrMeasureAMDataControl.BmCntrMeasureLineT1"
+            DataControl="CntrMeasureAMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <methodAction id="generateDocumentNumber"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="generateDocumentNumber" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.generateDocumentNumber_CntrMeasureAMDataControl_dataProvider_generateDocumentNumber_result">
+      <NamedData NDName="documentType" NDType="java.lang.String"/>
+      <NamedData NDName="cntrId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="CustomerName">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getExportData"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getExportData" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.getExportData_CntrMeasureAMDataControl_dataProvider_getExportData_result"/>
+    <listOfValues StaticList="false" IterBinding="BmCntrMeasureHeaderT1Iterator"
+                  Uses="LOV_CntrNumber" id="CntrNumber"/>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="MeasureDate">
+      <AttrNames>
+        <Item Value="MeasureDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="GraphicProgress">
+      <AttrNames>
+        <Item Value="GraphicProgress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BmCntrMeasureLineT1Iterator" id="BmCntrMeasureLineT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO"
+                      Name="BmCntrMeasureLineT10">
+        <AttrNames>
+          <Item Value="CntrListHeaderId"/>
+          <Item Value="CntrListName"/>
+          <Item Value="CntrListLineId"/>
+          <Item Value="CntrListUomCode"/>
+          <Item Value="BudgetQuantity"/>
+          <Item Value="CumulativeQuantity"/>
+          <Item Value="CompletionPercentage"/>
+          <Item Value="EngineeringQuantity"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="MeasureAmount"/>
+          <Item Value="TaskId"/>
+          <Item Value="TaskName"/>
+          <Item Value="CntrListNumber"/>
+          <Item Value="LineNum"/>
+          <Item Value="ProductionProAmount"/>
+          <Item Value="TaskNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues StaticList="false" IterBinding="BmCntrMeasureLineT1Iterator"
+                  Uses="LOV_CntrListName" id="CntrListName"/>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="CntrListUomCode">
+      <AttrNames>
+        <Item Value="CntrListUomCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="BudgetQuantity">
+      <AttrNames>
+        <Item Value="BudgetQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="CumulativeQuantity">
+      <AttrNames>
+        <Item Value="CumulativeQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="CompletionPercentage">
+      <AttrNames>
+        <Item Value="CompletionPercentage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="EngineeringQuantity">
+      <AttrNames>
+        <Item Value="EngineeringQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator" id="UnitPrice">
+      <AttrNames>
+        <Item Value="UnitPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureLineT1Iterator"
+                     id="ProductionProAmount">
+      <AttrNames>
+        <Item Value="ProductionProAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="ProSubcntrFlag">
+      <AttrNames>
+        <Item Value="ProSubcntrFlag"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator" id="VatAmount">
+      <AttrNames>
+        <Item Value="VatAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getCumulativeProductionAmount"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getCumulativeProductionAmount"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.getCumulativeProductionAmount_CntrMeasureAMDataControl_dataProvider_getCumulativeProductionAmount_result">
+      <NamedData NDName="cntrId" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

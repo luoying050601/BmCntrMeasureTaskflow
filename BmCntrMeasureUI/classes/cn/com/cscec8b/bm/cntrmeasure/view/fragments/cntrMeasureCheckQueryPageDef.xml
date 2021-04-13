@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureCheckQueryPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrVerifyHeaderT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrVerifyHeaderT1Iterator"/>
+    <searchRegion Criteria="BmCntrVerifyHeaderTVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrVerifyHeaderT1Iterator"
+                  id="BmCntrVerifyHeaderTVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BmCntrVerifyHeaderT1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentOwnerConfirmQuantities">
+      <AttrNames>
+        <Item Value="CurrentOwnerConfirmQuantities"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentOtherSubCntrOutput">
+      <AttrNames>
+        <Item Value="CurrentOtherSubCntrOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentSecurityAmount">
+      <AttrNames>
+        <Item Value="CurrentSecurityAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentCntrPaymentAmount">
+      <AttrNames>
+        <Item Value="CurrentCntrPaymentAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentLaborAmount">
+      <AttrNames>
+        <Item Value="CurrentLaborAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentProSubcntrOutput">
+      <AttrNames>
+        <Item Value="CurrentProSubcntrOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentActualOutput">
+      <AttrNames>
+        <Item Value="CurrentActualOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentAlreadyConfirmAmount">
+      <AttrNames>
+        <Item Value="CurrentAlreadyConfirmAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentLeftConfirmAmount">
+      <AttrNames>
+        <Item Value="CurrentLeftConfirmAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getExportCheckData"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getExportCheckData" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.getExportCheckData_CntrMeasureAMDataControl_dataProvider_getExportCheckData_result"/>
+    <tree IterBinding="BmCntrVerifyHeaderT1Iterator" id="BmCntrVerifyHeaderT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrVerifyHeaderTVO"
+                      Name="BmCntrVerifyHeaderT10">
+        <AttrNames>
+          <Item Value="CntrNumber"/>
+          <Item Value="VerifyStartDate"/>
+          <Item Value="Status"/>
+          <Item Value="CntrName"/>
+          <Item Value="VerifyEndDate"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="CustomerName"/>
+          <Item Value="CustomerNumber"/>
+          <Item Value="ProjectNumber"/>
+          <Item Value="ProjectName"/>
+          <Item Value="CntrConfirmDate"/>
+          <Item Value="ActualConfirmDate"/>
+          <Item Value="OwnerMeasureDelayTime"/>
+          <Item Value="CntrPaymentDate"/>
+          <Item Value="ActualPaymentDate"/>
+          <Item Value="OwnerPaymentDelayTime"/>
+          <Item Value="ActualOutput"/>
+          <Item Value="ActualPaymentAmount"/>
+          <Item Value="AlreadyConfirmAmount"/>
+          <Item Value="CntrPaymentAmount"/>
+          <Item Value="CntrVisaConfirmQuantity"/>
+          <Item Value="LaborAmount"/>
+          <Item Value="OtherSubcntrOutput"/>
+          <Item Value="OwerConfirmQuantity"/>
+          <Item Value="PreparedByName"/>
+          <Item Value="PreparedDate"/>
+          <Item Value="ProSubcntrOutput"/>
+          <Item Value="SecurityAmount"/>
+          <Item Value="LeftConfirmAmount"/>
+          <Item Value="CurrentOwnerConfirmQuantities"/>
+          <Item Value="CurrentOtherSubCntrOutput"/>
+          <Item Value="CurrentActualOutput"/>
+          <Item Value="CurrentProSubcntrOutput"/>
+          <Item Value="CurrentLaborAmount"/>
+          <Item Value="CurrentCntrPaymentAmount"/>
+          <Item Value="CurrentSecurityAmount"/>
+          <Item Value="CurrentActualPaymentAmount"/>
+          <Item Value="CurrentLeftConfirmAmount"/>
+          <Item Value="CurrentAlreadyConfirmAmount"/>
+          <Item Value="CumulativeActualOutput"/>
+          <Item Value="CumulativeWithholdAmount"/>
+          <Item Value="ConfirmValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CurrentVisaConfirmQuantity">
+      <AttrNames>
+        <Item Value="CurrentVisaConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

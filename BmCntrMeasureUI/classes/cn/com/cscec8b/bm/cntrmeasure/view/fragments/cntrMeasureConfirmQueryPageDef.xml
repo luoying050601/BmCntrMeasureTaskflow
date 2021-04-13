@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureConfirmQueryPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrFinConfirmT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrFinConfirmT1Iterator"/>
+    <searchRegion Criteria="BmCntrFinConfirmTVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrFinConfirmT1Iterator"
+                  id="BmCntrFinConfirmTVOCriteriaQuery"/>
+    <iterator id="BmCntrConfirm1Iterator" Binds="BmCntrConfirm1"
+              DataControl="CntrMeasureAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BmCntrFinConfirmT1Iterator" id="BmCntrFinConfirmT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrFinConfirmTVO"
+                      Name="BmCntrFinConfirmT10">
+        <AttrNames>
+          <Item Value="DocumentNumber"/>
+          <Item Value="ConfirmDate"/>
+          <Item Value="VerifyStartDate"/>
+          <Item Value="VerifyEndDate"/>
+          <Item Value="VerifyDocumentNumber"/>
+          <Item Value="OwerConfirmQuantity"/>
+          <Item Value="ActualConfirmDate"/>
+          <Item Value="CumulativeConfirmAmount"/>
+          <Item Value="ConfirmAmount"/>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="TransferStatus"/>
+          <Item Value="TransferErrorMsg"/>
+          <Item Value="LeftConfirmAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

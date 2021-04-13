@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="bm-cntr-measure-check-taskflow">
+    <default-activity id="__1">cntrMeasureCheckQuery</default-activity>
+    <input-parameter-definition id="__28">
+      <name id="__27">authorityType</name>
+      <value>#{pageFlowScope.authorityType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__13">
+      <managed-bean-name id="__12">cntrMeasureCheckDetailBean</managed-bean-name>
+      <managed-bean-class id="__15">cn.com.cscec8b.bm.cntrmeasure.view.backing.CntrMeasureCheckDetailBean</managed-bean-class>
+      <managed-bean-scope id="__14">backingBean</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean id="__35">
+      <managed-bean-name id="__37">upload</managed-bean-name>
+      <managed-bean-class id="__38">oracle.webcenter.doclib.internal.view.action.UploadAction</managed-bean-class>
+      <managed-bean-scope id="__36">pageFlow</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__41">
+      <managed-bean-name id="__39">featureCtrller</managed-bean-name>
+      <managed-bean-class id="__40">oracle.webcenter.doclib.internal.view.backing.FeatureController</managed-bean-class>
+      <managed-bean-scope id="__42">pageFlow</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__46">
+      <managed-bean-name id="__44">uploadBackingBean</managed-bean-name>
+      <managed-bean-class id="__45">oracle.webcenter.doclib.internal.view.action.UploadBackingBean</managed-bean-class>
+      <managed-bean-scope id="__43">backingBean</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__50">
+      <managed-bean-name id="__47">pickerPopup</managed-bean-name>
+      <managed-bean-class id="__48">oracle.webcenter.doclib.internal.view.backing.PickerPopup</managed-bean-class>
+      <managed-bean-scope id="__49">pageFlow</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__52">
+      <managed-bean-name id="__53">nameConflictResolverBackingBean</managed-bean-name>
+      <managed-bean-class id="__51">oracle.webcenter.doclib.internal.view.action.NameConflictResolverBackingBean</managed-bean-class>
+      <managed-bean-scope id="__54">backingBean</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__56">
+      <managed-bean-name id="__57">Html5UploadBean</managed-bean-name>
+      <managed-bean-class id="__58">com.definesys.fnd.upload.view.backing.Html5Upload</managed-bean-class>
+      <managed-bean-scope id="__55">backingBean</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean id="__59">
+      <managed-bean-name id="__62">NormalUploadBean</managed-bean-name>
+      <managed-bean-class id="__60">com.definesys.fnd.upload.view.backing.NormalUpload</managed-bean-class>
+      <managed-bean-scope id="__61">backingBean</managed-bean-scope>
+    </managed-bean>
+
+
+    <managed-bean id="__63">
+      <managed-bean-name id="__66">UploadBean</managed-bean-name>
+      <managed-bean-class id="__64">com.definesys.fnd.upload.view.backing.Upload</managed-bean-class>
+      <managed-bean-scope id="__65">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__24">
+      <managed-bean-name id="__22">CntrMeasureCheckDetailExportExcelBean</managed-bean-name>
+      <managed-bean-class id="__23">cn.com.cscec8b.bm.cntrmeasure.view.backing.CntrMeasureCheckDetailExportExcelBean</managed-bean-class>
+      <managed-bean-scope id="__25">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="cntrMeasureCheckQuery">
+      <page>/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureCheckQuery.jsff</page>
+    </view>
+    <view id="cntrMeasureCheckDetail">
+      <page>/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureCheckDetail.jsff</page>
+    </view>
+    <task-flow-call id="fnd-upload-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/com/definesys/fnd/upload/view/taskflow/fnd-upload-taskflow.xml</document>
+        <id>fnd-upload-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="__19">
+        <name>sourceId</name>
+        <value>#{pageFlowScope.sourceId}</value>
+      </input-parameter>
+      <input-parameter id="__20">
+        <name>sourceTable</name>
+        <value>BM.BM_CNTR_VERIFY_HEADER_T</value>
+      </input-parameter>
+      <input-parameter id="__26">
+        <name>readOnly</name>
+        <value>#{pageFlowScope.disableAction}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type id="__21">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">cntrMeasureCheckQuery</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">goDetail</from-outcome>
+        <to-activity-id id="__4">cntrMeasureCheckDetail</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">cntrMeasureCheckDetail</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">back</from-outcome>
+        <to-activity-id id="__9">cntrMeasureCheckQuery</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">goAttach</from-outcome>
+        <to-activity-id id="__16">fnd-upload-taskflow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

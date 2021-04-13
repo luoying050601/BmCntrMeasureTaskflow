@@ -1,0 +1,485 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="bmcntrmeasureuiBundle"
+         value="#{adfBundle['cn.com.cscec8b.bm.cntrmeasure.view.BmCntrMeasureUIBundle']}"/>
+  <af:panelStretchLayout id="psl1" endWidth="auto" topHeight="auto"
+                         bottomHeight="auto" startWidth="auto"
+                         binding="#{backingBeanScope.cntrMeasureApplyDetailBean.measurePanelStretchLayout}">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:popup id="p3"  
+                      binding="#{backingBeanScope.cntrMeasureApplyDetailBean.importPop}">
+              <af:panelWindow id="pw1">
+                <af:panelBox text="导入文件 " id="pb1">
+                  <f:facet name="toolbar"/>
+                  <af:inputFile label="选择文件 " id="if1"
+                                binding="#{backingBeanScope.cntrMeasureApplyDetailImportExcelBean.excelFile}"/>
+                  <af:commandButton text="确定 " id="cb6"
+                                    binding="#{backingBeanScope.cntrMeasureApplyDetailImportExcelBean.cntrMeasureApplyDetailImportExcelBtn}"
+                                    actionListener="#{backingBeanScope.cntrMeasureApplyDetailImportExcelBean.cntrMeasureApplyDetailImportExcelActionListener}"/>
+                    
+                  <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                    text="取消 "
+                                    disabled="#{!bindings.Rollback.enabled}"
+                                    immediate="true" id="cb7">
+                    <af:resetActionListener/>
+                  </af:commandButton>
+                </af:panelBox>
+              </af:panelWindow>
+            </af:popup>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.BmCntrMeasureLineT1.collectionModel}"
+                  var="row" rows="#{bindings.BmCntrMeasureLineT1.rangeSize}"
+                  emptyText="#{bindings.BmCntrMeasureLineT1.viewable ? '无显示数据' : '权限拒绝'}"
+                  fetchSize="#{bindings.BmCntrMeasureLineT1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.BmCntrMeasureLineT1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BmCntrMeasureLineT1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" varStatus="vs"
+                  editingMode="clickToEdit" immediate="true"
+                  binding="#{backingBeanScope.cntrMeasureApplyDetailBean.measureLinesTable}">
+          <af:column id="c13" width="5" rowHeader="true"/>
+          <af:column id="c12" width="30"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyQuery.lineNum']}"
+                     align="center">
+            <af:inputText value="#{vs.index+1}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.LineNum.label}"
+                          required="#{bindings.BmCntrMeasureLineT1.hints.LineNum.mandatory}"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.LineNum.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.LineNum.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.LineNum.tooltip}"
+                          id="it7" readOnly="true">
+              <f:validator binding="#{row.bindings.LineNum.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="CntrListHeaderId" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CntrListHeaderId.label}"
+                     id="c4">
+            <af:selectOneChoice value="#{row.bindings.CntrListHeaderId.inputValue}"
+                                label="#{row.bindings.CntrListHeaderId.label}"
+                                required="#{bindings.BmCntrMeasureLineT1.hints.CntrListHeaderId.mandatory}"
+                                shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CntrListHeaderId.tooltip}"
+                                id="soc7"
+                                valueChangeListener="#{backingBeanScope.cntrMeasureApplyDetailBean.listIdChangeListener}"
+                                readOnly="#{pageFlowScope.disableAction}"
+                                autoSubmit="true">
+              <f:selectItems value="#{row.bindings.CntrListHeaderId.items}"
+                             id="si7"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="CntrListName" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CntrListName.label}"
+                     id="c11" showRequired="true">
+            <af:inputListOfValues id="cntrListNameId"
+                                  popupTitle="查询与选择: #{bindings.BmCntrMeasureLineT1.hints.CntrListName.label}"
+                                  value="#{row.bindings.CntrListName.inputValue}"
+                                  model="#{row.bindings.CntrListName.listOfValuesModel}"
+                                  required="#{bindings.BmCntrMeasureLineT1.hints.CntrListName.mandatory}"
+                                  columns="#{bindings.BmCntrMeasureLineT1.hints.CntrListName.displayWidth}"
+                                  shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CntrListName.tooltip}"
+                                  autoSubmit="true"
+                                  readOnly="#{pageFlowScope.disableAction}"
+                                  partialTriggers="soc7">
+              <f:validator binding="#{row.bindings.CntrListName.validator}"/>
+            </af:inputListOfValues>
+          </af:column>
+          <af:column id="c15"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CntrListNumber.label}">
+            <af:outputText value="#{row.CntrListNumber}" id="ot1"
+                           partialTriggers="cntrListNameId"/>
+          </af:column>
+          <af:column sortProperty="CntrListLineId" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.label}"
+                     id="c1" rendered="false">
+            <af:inputText value="#{row.bindings.CntrListLineId.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.label}"
+                          required="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.mandatory}"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.tooltip}"
+                          id="it10">
+              <f:validator binding="#{row.bindings.CntrListLineId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrMeasureLineT1.hints.CntrListLineId.format}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="CntrListUomCode" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CntrListUomCode.label}"
+                     id="c2" align="center">
+            <af:selectOneChoice value="#{row.bindings.CntrListUomCode.inputValue}"
+                                label="#{row.bindings.CntrListUomCode.label}"
+                                required="#{bindings.BmCntrMeasureLineT1.hints.CntrListUomCode.mandatory}"
+                                shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CntrListUomCode.tooltip}"
+                                id="soc4" readOnly="true" autoSubmit="true"
+                                partialTriggers="cntrListNameId">
+              <f:selectItems value="#{row.bindings.CntrListUomCode.items}"
+                             id="si4"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="BudgetQuantity" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.BudgetQuantity.label}"
+                     id="c8" align="right">
+            <af:inputText value="#{row.bindings.BudgetQuantity.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.BudgetQuantity.label}"
+                          required="false"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.BudgetQuantity.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.BudgetQuantity.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.BudgetQuantity.tooltip}"
+                          id="it17" readOnly="true" autoSubmit="true"
+                          partialTriggers="cntrListNameId">
+              <f:validator binding="#{row.bindings.BudgetQuantity.validator}"/>
+            <af:convertNumber maxFractionDigits="5"
+                                type="number"/>
+              </af:inputText>
+          </af:column>
+          <af:column sortProperty="CumulativeQuantity" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CumulativeQuantity.label}"
+                     id="c9" align="right">
+            <af:inputText value="#{row.bindings.CumulativeQuantity.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.CumulativeQuantity.label}"
+                          required="false"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.CumulativeQuantity.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.CumulativeQuantity.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CumulativeQuantity.tooltip}"
+                          id="it18" readOnly="true" autoSubmit="true"
+                          partialTriggers="cntrListNameId">
+              <f:validator binding="#{row.bindings.CumulativeQuantity.validator}"/>
+            <af:convertNumber maxFractionDigits="5"
+                                type="number"/>
+             </af:inputText>
+          </af:column>
+          <af:column sortProperty="CompletionPercentage" sortable="false" width="100"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.CompletionPercentage.label}"
+                     id="c7" align="right" showRequired="true"
+                     binding="#{backingBeanScope.cntrMeasureApplyDetailBean.completage}">
+            <af:panelGroupLayout id="pgl2">
+              <af:inputText label="#{bindings.BmCntrMeasureLineT1.hints.CompletionPercentage.label}"
+                            required="false"
+                            maximumLength="#{bindings.BmCntrMeasureLineT1.hints.CompletionPercentage.precision}"
+                            shortDesc="#{bindings.BmCntrMeasureLineT1.hints.CompletionPercentage.tooltip}"
+                            id="it9"
+                            valueChangeListener="#{backingBeanScope.cntrMeasureApplyDetailBean.completedPercentageValueListener}"
+                            readOnly="#{pageFlowScope.disableAction}"
+                            contentStyle="width:50px;text-align:right; "
+                            partialTriggers="cntrListNameId"
+                            autoSubmit="true"
+                            value="#{row.bindings.CompletionPercentage.inputValue}"
+                            editable="always"
+                            columns="#{bindings.BmCntrMeasureLineT1.hints.CompletionPercentage.displayWidth}">
+                <af:convertNumber maxFractionDigits="2" type="number"/>
+                <af:validateDoubleRange id="dd1" maximum="100"
+                                        messageDetailNotInRange="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureApplyQuery.percMsg']}"
+                                        minimum="0"/>
+              </af:inputText>
+              <af:outputText value="%" id="ot4"/>
+            </af:panelGroupLayout>
+          </af:column>
+          <af:column sortProperty="EngineeringQuantity" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.EngineeringQuantity.label}"
+                     id="c3" align="right" showRequired="true">
+            <af:inputText value="#{row.bindings.EngineeringQuantity.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.EngineeringQuantity.label}"
+                          required="false"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.EngineeringQuantity.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.EngineeringQuantity.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.EngineeringQuantity.tooltip}"
+                          id="it13"
+                          valueChangeListener="#{backingBeanScope.cntrMeasureApplyDetailBean.engineQuantitiesValueListener}"
+                          readOnly="#{pageFlowScope.disableAction}" autoSubmit="true"
+                          contentStyle="text-align:right; ">
+              <f:validator binding="#{row.bindings.EngineeringQuantity.validator}"/>
+             <af:convertNumber maxFractionDigits="5"
+                                type="number"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="UnitPrice" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.UnitPrice.label}"
+                     id="c6" align="right">
+            <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.UnitPrice.label}"
+                          required="false"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.UnitPrice.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.UnitPrice.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.UnitPrice.tooltip}"
+                          id="it11" readOnly="true" autoSubmit="true"
+                          partialTriggers="cntrListNameId">
+              <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+               <af:convertNumber maxFractionDigits="5" 
+                                type="number"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="MeasureAmount" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.label}"
+                     id="c10" align="right">
+            <af:inputText value="#{row.bindings.MeasureAmount.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.label}"
+                          required="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.mandatory}"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.MeasureAmount.tooltip}"
+                          id="it8" readOnly="true" autoSubmit="true"
+                          partialTriggers="it9 it13">
+              <f:validator binding="#{row.bindings.MeasureAmount.validator}"/>
+             <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                type="number"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="TaskName" sortable="false"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.TaskName.label}"
+                     id="c5" showRequired="true">
+            <af:outputText value="#{row.TaskName}" id="ot5"/>
+          </af:column>
+          <af:column id="c16"
+                     headerText="#{bindings.BmCntrMeasureLineT1.hints.TaskNumber.label}">
+            <af:outputText value="#{row.TaskNumber}" id="ot6"/>
+          </af:column>
+          <af:column id="c14" rendered="false">
+          
+            <af:inputText value="#{row.bindings.ProductionProAmount.inputValue}"
+                          label="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.label}"
+                          required="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.mandatory}"
+                          columns="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.tooltip}"
+                          id="it5" readOnly="true" autoSubmit="true"
+                          partialTriggers="cntrListNameId">
+              <f:validator binding="#{row.bindings.ProductionProAmount.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrMeasureLineT1.hints.ProductionProAmount.format}"/>
+            </af:inputText>
+          </af:column>
+        
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureApplyDetail.HeaderText']}"
+                   id="pb2">
+        <f:facet name="toolbar">
+          <af:outputText value="单位：元" id="ot7" inlineStyle="color:Red;"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="4" maxColumns="4">
+          <af:inputText value="#{bindings.DocumentNumber.inputValue}"
+                        label="#{bindings.DocumentNumber.hints.label}"
+                        columns="#{bindings.DocumentNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.DocumentNumber.hints.precision}"
+                        shortDesc="#{bindings.DocumentNumber.hints.tooltip}"
+                        id="it3" autoSubmit="true" disabled="true"
+                        required="false">
+            <f:validator binding="#{bindings.DocumentNumber.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ProjectNumber.inputValue}"
+                        label="#{bindings.ProjectNumber.hints.label}"
+                        required="#{bindings.ProjectNumber.hints.mandatory}"
+                        columns="#{bindings.ProjectNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.ProjectNumber.hints.precision}"
+                        shortDesc="#{bindings.ProjectNumber.hints.tooltip}"
+                        id="it19" disabled="true">
+            <f:validator binding="#{bindings.ProjectNumber.validator}"/>
+          </af:inputText>
+          <af:inputListOfValues id="cntrNumberId"
+                                popupTitle="查询与选择: #{bindings.CntrNumber.hints.label}"
+                                value="#{bindings.CntrNumber.inputValue}"
+                                label="#{bindings.CntrNumber.hints.label}"
+                                model="#{bindings.CntrNumber.listOfValuesModel}"
+                                required="#{bindings.CntrNumber.hints.mandatory}"
+                                columns="#{bindings.CntrNumber.hints.displayWidth}"
+                                shortDesc="#{bindings.CntrNumber.hints.tooltip}"
+                                autoSubmit="true" editMode="input"
+                                disabled="#{bindings.Status.attributeValue ne'EDIT' or bindings.DocumentNumber ne ' '}"
+                                binding="#{backingBeanScope.cntrMeasureApplyDetailBean.cntrName}"
+                                showRequired="true">
+            <f:validator binding="#{bindings.CntrNumber.validator}"/>
+          </af:inputListOfValues>
+          <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                              label="#{bindings.Status.label}"
+                              required="#{bindings.Status.hints.mandatory}"
+                              shortDesc="#{bindings.Status.hints.tooltip}"
+                              id="soc1" disabled="true">
+            <f:selectItems value="#{bindings.Status.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.PreparedDate.inputValue}"
+                        label="#{bindings.PreparedDate.hints.label}"
+                        required="#{bindings.PreparedDate.hints.mandatory}"
+                        shortDesc="#{bindings.PreparedDate.hints.tooltip}"
+                        id="id3" disabled="true">
+            <f:validator binding="#{bindings.PreparedDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.PreparedDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.ProjectName.inputValue}"
+                        label="#{bindings.ProjectName.hints.label}"
+                        required="#{bindings.ProjectName.hints.mandatory}"
+                        columns="#{bindings.ProjectName.hints.displayWidth}"
+                        maximumLength="#{bindings.ProjectName.hints.precision}"
+                        shortDesc="#{bindings.ProjectName.hints.tooltip}"
+                        id="it21" disabled="true">
+            <f:validator binding="#{bindings.ProjectName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CntrName.inputValue}"
+                        label="#{bindings.CntrName.hints.label}"
+                        required="#{bindings.CntrName.hints.mandatory}"
+                        columns="#{bindings.CntrName.hints.displayWidth}"
+                        maximumLength="#{bindings.CntrName.hints.precision}"
+                        shortDesc="#{bindings.CntrName.hints.tooltip}" id="it6"
+                        autoSubmit="true" disabled="true"
+                        partialTriggers="cntrNumberId">
+            <f:validator binding="#{bindings.CntrName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.CntrListNumber.inputValue}"
+                              label="#{bindings.CntrListNumber.label}"
+                              required="#{bindings.CntrListNumber.hints.mandatory}"
+                              shortDesc="#{bindings.CntrListNumber.hints.tooltip}"
+                              id="soc5" autoSubmit="true"
+                              valueChangeListener="#{backingBeanScope.cntrMeasureApplyDetailBean.queryAllListLineListener}"
+                              disabled="#{pageFlowScope.disableAction}"
+                              partialTriggers="cntrNumberId">
+            <f:selectItems value="#{bindings.CntrListNumber.items}" id="si5"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.MeasureDate.inputValue}"
+                        label="#{bindings.MeasureDate.hints.label}"
+                        required="#{bindings.MeasureDate.hints.mandatory}"
+                        shortDesc="#{bindings.MeasureDate.hints.tooltip}"
+                        id="id1" disabled="#{pageFlowScope.disableAction}"
+                        autoSubmit="true">
+            <f:validator binding="#{bindings.MeasureDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.MeasureDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.PreparedByName.inputValue}"
+                        label="#{bindings.PreparedByName.hints.label}"
+                        required="#{bindings.PreparedByName.hints.mandatory}"
+                        columns="#{bindings.PreparedByName.hints.displayWidth}"
+                        maximumLength="#{bindings.PreparedByName.hints.precision}"
+                        shortDesc="#{bindings.PreparedByName.hints.tooltip}"
+                        id="it2" autoSubmit="true" disabled="true">
+            <f:validator binding="#{bindings.PreparedByName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.AccountFlag.inputValue}"
+                              label="#{bindings.AccountFlag.label}"
+                              required="#{bindings.AccountFlag.hints.mandatory}"
+                              shortDesc="#{bindings.AccountFlag.hints.tooltip}"
+                              id="soc3" disabled="true">
+            <f:selectItems value="#{bindings.AccountFlag.items}" id="si3"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.CustomerName.inputValue}"
+                        label="#{bindings.CustomerName.hints.label}"
+                        required="true"
+                        columns="#{bindings.CustomerName.hints.displayWidth}"
+                        maximumLength="#{bindings.CustomerName.hints.precision}"
+                        shortDesc="#{bindings.CustomerName.hints.tooltip}"
+                        id="it4" disabled="true" partialTriggers="cntrNumberId"
+                        autoSubmit="true">
+            <f:validator binding="#{bindings.CustomerName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{backingBeanScope.cntrMeasureApplyDetailBean.productionTotal}"
+                        label="#{bindings.ProductionTotal.hints.label}"
+                        required="#{bindings.ProductionTotal.hints.mandatory}"
+                        columns="#{bindings.ProductionTotal.hints.displayWidth}"
+                        maximumLength="#{bindings.ProductionTotal.hints.precision}"
+                        shortDesc="#{bindings.ProductionTotal.hints.tooltip}"
+                        id="it1" autoSubmit="true" disabled="true"
+                        partialTriggers="pc1:t1:it8">
+            <f:validator binding="#{bindings.ProductionTotal.validator}"/>
+            <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                              type="number"/>
+          </af:inputText>
+          <af:inputText label="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyQuery.cumulativeProductionAmount']}"
+                        id="it16"
+                        value="#{backingBeanScope.cntrMeasureApplyDetailBean.cumulativeProductionAmount}"
+                        readOnly="true" disabled="false" autoSubmit="true"
+                        partialTriggers="pc1:t1:it8">
+            <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                              type="number"/>
+          </af:inputText>
+          <af:inputText value="#{backingBeanScope.cntrMeasureApplyDetailBean.vatAmount}"
+                        label="#{bindings.VatAmount.hints.label}"
+                        required="#{bindings.VatAmount.hints.mandatory}"
+                        columns="#{bindings.VatAmount.hints.displayWidth}"
+                        maximumLength="#{bindings.VatAmount.hints.precision}"
+                        shortDesc="#{bindings.VatAmount.hints.tooltip}"
+                        id="it12" readOnly="false" disabled="true"
+                        partialTriggers="it1">
+            <f:validator binding="#{bindings.VatAmount.validator}"/>
+            <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                              type="number"/>
+          </af:inputText>
+          <af:selectBooleanCheckbox value="#{bindings.ProSubcntrFlag.inputValue}"
+                                    label="#{bindings.ProSubcntrFlag.label}"
+                                    shortDesc="#{bindings.ProSubcntrFlag.hints.tooltip}"
+                                    id="sbc1"
+                                    disabled="#{pageFlowScope.disableAction}"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout id="pfl2">
+          <af:inputText value="#{bindings.GraphicProgress.inputValue}"
+                        label="#{bindings.GraphicProgress.hints.label}"
+                        required="#{bindings.GraphicProgress.hints.mandatory}"
+                        columns="#{bindings.GraphicProgress.hints.displayWidth}"
+                        maximumLength="#{bindings.GraphicProgress.hints.precision}"
+                        shortDesc="#{bindings.GraphicProgress.hints.tooltip}"
+                        id="it14" contentStyle="width:520px"
+                        disabled="#{pageFlowScope.disableAction}"
+                        autoSubmit="true">
+            <f:validator binding="#{bindings.GraphicProgress.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Comments.inputValue}"
+                        label="#{bindings.Comments.hints.label}"
+                        required="#{bindings.Comments.hints.mandatory}"
+                        columns="#{bindings.Comments.hints.displayWidth}"
+                        maximumLength="#{bindings.Comments.hints.precision}"
+                        shortDesc="#{bindings.Comments.hints.tooltip}" id="it15"
+                        contentStyle="width:520px"
+                        disabled="#{pageFlowScope.disableAction}"
+                        autoSubmit="true">
+            <f:validator binding="#{bindings.Comments.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CntrMeasureHeaderId.inputValue}"
+                        label="#{bindings.CntrMeasureHeaderId.hints.label}"
+                        required="#{bindings.CntrMeasureHeaderId.hints.mandatory}"
+                        columns="#{bindings.CntrMeasureHeaderId.hints.displayWidth}"
+                        maximumLength="#{bindings.CntrMeasureHeaderId.hints.precision}"
+                        shortDesc="#{bindings.CntrMeasureHeaderId.hints.tooltip}"
+                        id="it20" autoSubmit="true" rendered="false">
+            <f:validator binding="#{bindings.CntrMeasureHeaderId.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.CntrMeasureHeaderId.format}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:cntrMeasureApplyDetailBean-->
+  <af:popup id="p1">
+    <af:dialog id="d1"
+               dialogListener="#{backingBeanScope.cntrMeasureApplyDetailBean.confirmDeleteListener}"
+               title="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureApplyDetail.deleteConfirmTitle']}"
+               cancelTextAndAccessKey="否" affirmativeTextAndAccessKey="是">
+      <af:outputText value="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureApplyDetail.deleteConfirm']}"
+                     id="ot2"/>
+    </af:dialog>
+  </af:popup>
+  <af:popup id="p2">
+    <af:dialog id="d2" affirmativeTextAndAccessKey="是"
+               cancelTextAndAccessKey="否"
+               dialogListener="#{backingBeanScope.cntrMeasureApplyDetailBean.returnConfirmListener}">
+      <af:outputText id="ot3"
+                     value="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetail.returnConfirmTitle']}"/>
+    </af:dialog>
+  </af:popup>
+  <af:popup id="p5" autoCancel="disabled"
+                            contentDelivery="lazyUncached">
+                     <af:noteWindow id="nw1" inlineStyle="width:730.0px;">
+                        <af:region value="#{bindings.bpmapprovalhistorytaskflow1.regionModel}"
+                                   id="r1"/>
+                     </af:noteWindow>
+                  </af:popup>
+</jsp:root>

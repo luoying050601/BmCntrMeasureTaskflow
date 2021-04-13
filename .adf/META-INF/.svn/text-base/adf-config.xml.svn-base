@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adf-config xmlns="http://xmlns.oracle.com/adf/config"
+            xmlns:config="http://xmlns.oracle.com/bc4j/configuration"
+            xmlns:adf="http://xmlns.oracle.com/adf/config/properties"
+            xmlns:sec="http://xmlns.oracle.com/adf/security/config"
+            xmlns:mdsC="http://xmlns.oracle.com/adf/mds/config"
+            xmlns:searchC="http://xmlns.oracle.com/webcenter/search/config"
+            xmlns:relC="http://xmlns.oracle.com/webcenter/relationship/config"
+            xmlns:collabC="http://xmlns.oracle.com/webcenter/collab/config"
+            xmlns:tagC="http://xmlns.oracle.com/webcenter/tagging/config">
+  <adf-adfm-config xmlns="http://xmlns.oracle.com/adfm/config">
+    <defaults useBindVarsForViewCriteriaLiterals="true"/>
+    <startup>
+      <amconfig-overrides>
+        <config:Database jbo.locking.mode="optimistic"/>
+      </amconfig-overrides>
+    </startup>
+  </adf-adfm-config>
+  <adf:adf-properties-child xmlns="http://xmlns.oracle.com/adf/config/properties">
+    <adf-property name="adfAppUID"
+                  value="BmCntrMeasureTaskflow.cn.com.cscec8b.bm.cntrmeasure"/>
+  </adf:adf-properties-child>
+  <sec:adf-security-child xmlns="http://xmlns.oracle.com/adf/security/config">
+    <CredentialStoreContext credentialStoreClass="oracle.adf.share.security.providers.jps.CSFCredentialStore"
+                            credentialStoreLocation="../../src/META-INF/jps-config.xml"/>
+    <sec:JaasSecurityContext initialContextFactoryClass="oracle.adf.share.security.JAASInitialContextFactory"
+                             jaasProviderClass="oracle.adf.share.security.providers.jps.JpsSecurityContext"
+                             authorizationEnforce="false"
+                             authenticationRequire="true"/>
+  </sec:adf-security-child>
+  <searchC:adf-search-config xmlns="http://xmlns.oracle.com/webcenter/search/config">
+    <display-properties>
+      <common numSavedSearches="5"/>
+      <region-specific>
+        <usage id="simpleSearchResultUIMetadata" numServiceRows="5"/>
+        <usage id="searchResultUIMetadata" numServiceRows="5"/>
+        <usage id="localToolbarRegion" numServiceRows="5"/>
+      </region-specific>
+    </display-properties>
+    <execution-properties timeoutMs="3000" prepareTimeoutMs="1000"/>
+    <crawl-properties fullCrawlInterval="P5D" enableWcServicesCrawl="true"
+                      enableWcDiscussionsCrawl="true" enableWcUcmCrawl="true"/>
+    <ses-properties>
+      <connection/>
+      <data-group/>
+    </ses-properties>
+  </searchC:adf-search-config>
+  <adf-relationship-config xmlns="http://xmlns.oracle.com/webcenter/relationship/config"/>
+  <collabC:adf-collaboration-config>
+    <service-config xmlns="http://xmlns.oracle.com/webcenter/collab/config"
+                    serviceId="oracle.webcenter.collab.rtc">
+      <!-- The currently selected RTC connection -->
+      <!--property name="selected.connection" value=""/-->
+      <property name="auto.login" value="false"/>
+    </service-config>
+  </collabC:adf-collaboration-config>
+  <adf-tagging-config xmlns="http://xmlns.oracle.com/webcenter/tagging/config"/>
+  <mdsC:adf-mds-config version="11.1.1.000">
+    <mds-config xmlns="http://xmlns.oracle.com/mds/config">
+      <persistence-config>
+        <metadata-namespaces>
+          <namespace path="/oracle/adf/share/prefs"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/oracle/webcenter/lifecycle/importexport"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/oracle/webcenter/lock"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/oracle/webcenter/rc"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/persdef/"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/shared/oracle/wcps"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/oracle/webcenter/search/scopedMD"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+          <namespace path="/oracle/webcenter/doclib/scopedMD"
+                     metadata-store-usage="WebCenterFileMetadataStore"/>
+        </metadata-namespaces>
+        <metadata-store-usages>
+          <metadata-store-usage id="WebCenterFileMetadataStore"
+                                default-cust-store="true" deploy-target="true">
+            <metadata-store class-name="oracle.mds.dt.persistence.stores.file.SrcControlFileMetadataStore">
+              <property name="metadata-path" value="../../mds"/>
+            </metadata-store>
+          </metadata-store-usage>
+        </metadata-store-usages>
+        <retry-connection enabled="true"/>
+      </persistence-config>
+      <cust-config>
+        <match>
+          <customization-class name="oracle.adf.share.config.SiteCC"/>
+        </match>
+      </cust-config>
+      <cache-config>
+        <max-size-kb>100000</max-size-kb>
+      </cache-config>
+    </mds-config>
+  </mdsC:adf-mds-config>
+</adf-config>

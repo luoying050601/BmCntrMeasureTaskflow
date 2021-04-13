@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="bm_cntr_measure_approval_taskflow_bm_cntr_measure_approval_taskflow_queryBmCntrMeasureByHeaderIdPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.taskflows"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="queryBmCntrMeasureByHeaderId" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="queryBmCntrMeasureByHeaderId"
+                  IsViewObjectMethod="false"
+                  DataControl="CntrMeasureAMDataControl"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider">
+      <NamedData NDName="headerId" NDValue="#{pageFlowScope.headerId}"
+                 NDType="oracle.jbo.domain.Number"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

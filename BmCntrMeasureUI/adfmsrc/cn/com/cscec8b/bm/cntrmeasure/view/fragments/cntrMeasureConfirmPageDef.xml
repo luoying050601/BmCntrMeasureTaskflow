@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureConfirmPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrConfirm1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrConfirm1Iterator"/>
+    <searchRegion Criteria="BmCntrConfirmVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrConfirm1Iterator"
+                  id="BmCntrConfirmVOCriteriaQuery"/>
+    <iterator id="BmCntrFinConfirmT1Iterator" Binds="BmCntrFinConfirmT1"
+              DataControl="CntrMeasureAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BmCntrConfirm1Iterator" id="BmCntrConfirm1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrConfirmVO"
+                      Name="BmCntrConfirm10">
+        <AttrNames>
+          <Item Value="DocumentNumber"/>
+          <Item Value="VerifyStartDate"/>
+          <Item Value="VerifyEndDate"/>
+          <Item Value="OwerConfirmQuantity"/>
+          <Item Value="AlreadyConfirmAmount"/>
+          <Item Value="LeftConfirmAmount"/>
+          <Item Value="CurrentTransferAmount"/>
+          <Item Value="TransferStatus"/>
+          <Item Value="FinConfirmDocumentNumber"/>
+          <Item Value="ActualConfirmDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="BmCntrFinConfirmT1Iterator" id="CreateInsert"
+            InstanceName="CntrMeasureAMDataControl.BmCntrFinConfirmT1"
+            DataControl="CntrMeasureAMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="CntrMeasureAMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <methodAction id="generateDocumentNumber"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="generateDocumentNumber" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.generateDocumentNumber_CntrMeasureAMDataControl_dataProvider_generateDocumentNumber_result">
+      <NamedData NDName="documentType" NDType="java.lang.String"/>
+      <NamedData NDName="cntrId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="BmCntrConfirm1Iterator"
+                     id="CurrentOwerConfirmQuantity">
+      <AttrNames>
+        <Item Value="CurrentOwerConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrConfirm1Iterator"
+                     id="CurrentAllTransferAmount">
+      <AttrNames>
+        <Item Value="CurrentAllTransferAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrConfirm1Iterator"
+                     id="CurrentAlreadyConfirmAmount">
+      <AttrNames>
+        <Item Value="CurrentAlreadyConfirmAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrConfirm1Iterator"
+                     id="CurrentLeftConfirmAmount">
+      <AttrNames>
+        <Item Value="CurrentLeftConfirmAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="countTrasnferingRecord"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="countTrasnferingRecord" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.countTrasnferingRecord_CntrMeasureAMDataControl_dataProvider_countTrasnferingRecord_result">
+      <NamedData NDName="cntrId" NDType="int"/>
+    </methodAction>
+    <methodAction id="isValidateTransferDate"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="isValidateTransferDate" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.isValidateTransferDate_CntrMeasureAMDataControl_dataProvider_isValidateTransferDate_result">
+      <NamedData NDName="transferDate" NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="orgId" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

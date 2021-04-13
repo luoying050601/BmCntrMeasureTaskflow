@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="bmcntrmeasureuiBundle"
+         value="#{adfBundle['cn.com.cscec8b.bm.cntrmeasure.view.BmCntrMeasureUIBundle']}"/>
+  <af:panelStretchLayout id="psl1" endWidth="auto" bottomHeight="auto"
+                         topHeight="auto" startWidth="auto"
+                         binding="#{backingBeanScope.cntrMeasureApplyDetailQueryBean.measureLayout}">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1" featuresOff="detach statusBar">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:inputText value="#{bindings.CurrentMeasureAmount.inputValue}"
+                            label="#{bindings.CurrentMeasureAmount.hints.label}"
+                            required="#{bindings.CurrentMeasureAmount.hints.mandatory}"
+                            columns="#{bindings.CurrentMeasureAmount.hints.displayWidth}"
+                            maximumLength="#{bindings.CurrentMeasureAmount.hints.precision}"
+                            shortDesc="#{bindings.CurrentMeasureAmount.hints.tooltip}"
+                            id="it1" readOnly="true" partialTriggers="t1:ot2">
+                <f:validator binding="#{bindings.CurrentMeasureAmount.validator}"/>
+                <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                  type="number"/>
+              </af:inputText>
+              <af:inputText id="it3" value="#{pageFlowScope.allMeasureAmount}"
+                            label="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetailQuery.measureAmountText']}"
+                            readOnly="true">
+                <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                  type="number"/>
+              </af:inputText>
+              <af:commandToolbarButton text="导出台账 " id="cb1"
+                                       styleClass="stress_button">
+                <af:exportCollectionActionListener exportedId="t1"
+                                                   type="excelHTML"
+                                                   filename="总包计量台账.xls"/>
+              </af:commandToolbarButton>
+              <f:facet name="separator">
+                <af:spacer width="10" height="10" id="s1"/>
+              </f:facet>
+            </af:panelGroupLayout>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.BmCntrMeasureQuery1.collectionModel}"
+                  var="row" rows="#{bindings.BmCntrMeasureQuery1.rangeSize}"
+                  emptyText="#{bindings.BmCntrMeasureQuery1.viewable ? '无显示数据' : '权限拒绝'}"
+                  fetchSize="#{bindings.BmCntrMeasureQuery1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.BmCntrMeasureQuery1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BmCntrMeasureQuery1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" varStatus="vs"
+                  binding="#{backingBeanScope.cntrMeasureApplyDetailQueryBean.measureTable}"
+                  filterModel="#{bindings.BmCntrMeasureQueryVOCriteriaQuery.queryDescriptor}"
+                  queryListener="#{bindings.BmCntrMeasureQueryVOCriteriaQuery.processQuery}">
+          <af:column id="c7" width="5" rowHeader="true" headerText=""/>
+          <af:column sortProperty="ProjectId" sortable="true"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetailQuery.lineTitle']}"
+                     id="c20" width="50" align="center">
+            <af:outputText value="#{vs.index+1}" id="ot24">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrMeasureQuery1.hints.ProjectId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="ProjectNumber" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.ProjectNumber.label}"
+                     id="c5" width="105" align="center" rendered="false"
+                     filterable="true">
+            <af:outputText value="#{row.ProjectNumber}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="ProjectName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.ProjectName.label}"
+                     id="c15" width="155" rendered="false" filterable="true">
+            <af:outputText value="#{row.ProjectName}" id="ot11"/>
+          </af:column>
+          <af:column id="c8" rendered="false" sortProperty="CntrListLineId"
+                     filterable="true" sortable="false">
+            <af:inputText value="#{row.bindings.CntrListLineId.inputValue}"
+                          label="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.label}"
+                          required="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.mandatory}"
+                          columns="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.tooltip}"
+                          id="it4">
+              <f:validator binding="#{row.bindings.CntrListLineId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrMeasureQuery1.hints.CntrListLineId.format}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="ContactNumber" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.ContactNumber.label}"
+                     id="c19" width="120" align="center" filterable="true">
+            <af:outputText value="#{row.ContactNumber}" id="ot22"/>
+          </af:column>
+          <af:column sortProperty="ContactName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.ContactName.label}"
+                     id="c25" width="250" filterable="true">
+            <af:outputText value="#{row.ContactName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="CustomerName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.CustomerName.label}"
+                     id="c4" width="220" filterable="true">
+            <af:outputText value="#{row.CustomerName}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="ListName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.ListName.label}"
+                     id="c21" width="150" filterable="true">
+            <af:outputText value="#{row.ListName}" id="ot25"/>
+          </af:column>
+          <af:column sortProperty="CntrListName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.CntrListName.label}"
+                     id="c3" width="150" filterable="true">
+            <af:outputText value="#{row.CntrListName}" id="ot19"/>
+          </af:column>
+          <af:column sortProperty="DocumentNumber" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.label}"
+                     id="c22" width="170" align="center" filterable="true">
+            <af:inputText value="#{row.bindings.DocumentNumber.inputValue}"
+                          label="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.label}"
+                          required="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.mandatory}"
+                          columns="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.displayWidth}"
+                          maximumLength="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.precision}"
+                          shortDesc="#{bindings.BmCntrMeasureQuery1.hints.DocumentNumber.tooltip}"
+                          id="it2" readOnly="true">
+              <f:validator binding="#{row.bindings.DocumentNumber.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column id="c6"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.CostAccountType.label}"
+                     width="120" sortable="true" sortProperty="CostAccountType"
+                     filterable="true">
+            <af:selectOneChoice value="#{row.bindings.CostAccountType.inputValue}"
+                                label="#{row.bindings.CostAccountType.label}"
+                                required="#{bindings.BmCntrMeasureQuery1.hints.CostAccountType.mandatory}"
+                                shortDesc="#{bindings.BmCntrMeasureQuery1.hints.CostAccountType.tooltip}"
+                                id="soc3" readOnly="true">
+              <f:selectItems value="#{row.bindings.CostAccountType.items}"
+                             id="si3"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column id="c1"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.Description.label}"
+                     width="120" sortable="true" sortProperty="Description"
+                     filterable="true">
+            <af:outputText value="#{row.Description}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="CntrListUomCode" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.CntrListUomCode.label}"
+                     id="c9" width="120" filterable="true">
+            <af:selectOneChoice value="#{row.bindings.CntrListUomCode.inputValue}"
+                                label="#{row.bindings.CntrListUomCode.label}"
+                                required="#{bindings.BmCntrMeasureQuery1.hints.CntrListUomCode.mandatory}"
+                                shortDesc="#{bindings.BmCntrMeasureQuery1.hints.CntrListUomCode.tooltip}"
+                                id="soc2" readOnly="true">
+              <f:selectItems value="#{row.bindings.CntrListUomCode.items}"
+                             id="si2"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="EngineeringQuantity" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.EngineeringQuantity.label}"
+                     id="c17" width="150" align="right" filterable="true">
+            <af:outputText value="#{row.EngineeringQuantity}" id="ot26">
+          <af:convertNumber maxFractionDigits="5"    type="number"/>
+  </af:outputText>
+          </af:column>
+          <af:column sortProperty="UnitPrice" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.UnitPrice.label}"
+                     id="c18" align="right" filterable="true" width="150">
+            <af:outputText value="#{row.UnitPrice}" id="ot15">
+          <af:convertNumber maxFractionDigits="5"    type="number"/>
+   </af:outputText>
+          </af:column>
+          <af:column sortProperty="MeasureAmount" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.MeasureAmount.label}"
+                     id="c13" align="right" filterable="true" width="150">
+            <af:outputText value="#{row.MeasureAmount}" id="ot2">
+             <af:convertNumber maxFractionDigits="2" minFractionDigits="2"    type="number"/>
+  </af:outputText>
+          </af:column>
+          <af:column sortProperty="TaskName" sortable="true"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.TaskName.label}"
+                     id="c2" width="150">
+            <af:outputText value="#{row.TaskName}" id="ot5"/>
+          </af:column>
+          <af:column id="c10"
+                     headerText="#{bindings.BmCntrMeasureQuery1.hints.TaskNumber.label}"
+                     width="150">
+            <af:outputText value="#{row.TaskNumber}" id="ot7"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelBox text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetailQuery.queryTitle']}" id="ph1">
+          <af:query id="qryId1"
+                    headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.Query.queryTitle']}" disclosed="true"
+                    value="#{bindings.BmCntrMeasureQueryVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.BmCntrMeasureQueryVOCriteriaQuery.queryModel}"
+                    queryOperationListener="#{bindings.BmCntrMeasureQueryVOCriteriaQuery.processQueryOperation}"
+                    saveQueryMode="hidden" modeChangeVisible="false" rows="3"
+                    maxColumns="4" resultComponentId="::pc1"
+                    queryListener="#{backingBeanScope.cntrMeasureApplyDetailQueryBean.queryDetailListener}"/>
+        </af:panelBox>
+        <af:spacer width="10" height="10" id="s2"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

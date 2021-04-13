@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureApplyQueryPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="bmcntrmeasureapplytaskflow1"
+              taskFlowId="/WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-apply-taskflow.xml#bm-cntr-measure-apply-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <page id="pg1" path="templates.cscec8bTemplatePageDef" Refresh="ifNeeded"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

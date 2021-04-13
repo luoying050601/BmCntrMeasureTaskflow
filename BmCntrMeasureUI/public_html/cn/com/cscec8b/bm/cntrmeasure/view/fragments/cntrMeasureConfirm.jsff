@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="bmcntrmeasureuiBundle"
+         value="#{adfBundle['cn.com.cscec8b.bm.cntrmeasure.view.BmCntrMeasureUIBundle']}"/>
+  <af:panelStretchLayout id="psl1" startWidth="auto" endWidth="auto"
+                         topHeight="auto" bottomHeight="auto">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1" featuresOff="detach statusBar">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:panelGroupLayout id="pgl6" layout="horizontal">
+              <af:commandToolbarButton text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirm.transferButton']}"
+                                       id="ctb1"
+                                       actionListener="#{backingBeanScope.cntrMeasureConfirmBean.isTableEmplyListener}"
+                                       styleClass="stress_button"/>
+              <af:commandToolbarButton text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirm.queryButton']}"
+                                       id="ctb2" immediate="true"
+                                       styleClass="stress_button"
+                                       actionListener="#{backingBeanScope.cntrMeasureConfirmBean.goHistory}"
+                                       rendered="#{pageFlowScope.authorityType eq 'VIEW'}"/>
+              <f:facet name="separator">
+                <af:spacer width="10" height="10" id="s1"/>
+              </f:facet>
+            </af:panelGroupLayout>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.BmCntrConfirm1.collectionModel}" var="row"
+                  rows="#{bindings.BmCntrConfirm1.rangeSize}"
+                  emptyText="#{bindings.BmCntrConfirm1.viewable ? '无显示数据' : '权限拒绝'}"
+                  fetchSize="#{bindings.BmCntrConfirm1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.BmCntrConfirm1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BmCntrConfirm1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1"
+                  binding="#{backingBeanScope.cntrMeasureConfirmBean.verifyTable}"
+                  editingMode="editAll" varStatus="vs">
+          <af:column id="c9" width="5" rowHeader="true" headerText=""/>
+          <af:column id="c8"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetailQuery.lineTitle']}"
+                     width="50" align="center">
+            <af:outputText value="#{vs.index+1}" id="ot2"/>
+            <f:facet name="footer">
+              <af:outputText value="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasure.count']}"
+                             id="ot12"
+                             rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="DocumentNumber" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.DocumentNumber.label}"
+                     id="c3" width="170" align="center">
+            <af:outputText value="#{row.DocumentNumber}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="VerifyStartDate" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.VerifyStartDate.label}"
+                     id="c1" width="120">
+            <af:outputText value="#{row.VerifyStartDate}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.BmCntrConfirm1.hints.VerifyStartDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="VerifyEndDate" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.VerifyEndDate.label}"
+                     id="c4" width="120">
+            <af:outputText value="#{row.VerifyEndDate}" id="ot5">
+              <af:convertDateTime pattern="#{bindings.BmCntrConfirm1.hints.VerifyEndDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column id="c12" width="150"
+                     headerText="#{bindings.BmCntrConfirm1.hints.ActualConfirmDate.label}"
+                     sortable="true" sortProperty="ActualConfirmDate">
+            <af:inputDate value="#{row.bindings.ActualConfirmDate.inputValue}"
+                          label="#{bindings.BmCntrConfirm1.hints.ActualConfirmDate.label}"
+                          required="#{bindings.BmCntrConfirm1.hints.ActualConfirmDate.mandatory}"
+                          shortDesc="#{bindings.BmCntrConfirm1.hints.ActualConfirmDate.tooltip}"
+                          id="id2">
+              <f:validator binding="#{row.bindings.ActualConfirmDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.BmCntrConfirm1.hints.ActualConfirmDate.format}"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="OwerConfirmQuantity" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.OwerConfirmQuantity.label}"
+                     id="c5" align="right" width="150">
+            <af:outputText value="#{row.OwerConfirmQuantity}" id="ot1">
+   <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/></af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl5" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentOwerConfirmQuantity.inputValue}"
+                               id="ot10" partialTriggers="ot1"
+                               rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="AlreadyConfirmAmount" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.AlreadyConfirmAmount.label}"
+                     id="c2" align="right" width="150">
+            <af:outputText value="#{row.AlreadyConfirmAmount}" id="ot6">
+             <af:convertNumber maxFractionDigits="2" minFractionDigits="2"    type="number"/>
+  </af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl4" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentAlreadyConfirmAmount.inputValue}"
+                               id="ot8" partialTriggers="ot6"
+                               rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="LeftConfirmAmount" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.LeftConfirmAmount.label}"
+                     id="c7" align="right" width="150">
+            <af:outputText value="#{row.LeftConfirmAmount}" id="ot4">
+            <af:convertNumber maxFractionDigits="2" minFractionDigits="2"    type="number"/>
+ </af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl3" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentLeftConfirmAmount.inputValue}"
+                               id="ot9" partialTriggers="ot4"
+                               rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="CurrentTransferAmount" sortable="true"
+                     headerText="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.label}"
+                     id="c6" showRequired="true" align="right" width="200">
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl2" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentAllTransferAmount.inputValue}"
+                               id="ot11" partialTriggers="it1"
+                               rendered="#{bindings.BmCntrConfirm1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+            <af:inputText value="#{row.bindings.CurrentTransferAmount.inputValue}"
+                          label="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.label}"
+                          required="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.mandatory}"
+                          columns="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.displayWidth}"
+                          maximumLength="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.precision}"
+                          shortDesc="#{bindings.BmCntrConfirm1.hints.CurrentTransferAmount.tooltip}"
+                          id="it1" autoSubmit="true"
+                          contentStyle="text-align:right;">
+              <f:validator binding="#{row.bindings.CurrentTransferAmount.validator}"/>
+          <af:convertNumber maxFractionDigits="2" minFractionDigits="2"    type="number"/>
+  </af:inputText>
+          </af:column>
+          <af:column id="c10"
+                     headerText="#{bindings.BmCntrConfirm1.hints.TransferStatus.label}"
+                     align="center" sortable="true"
+                     sortProperty="TransferStatus">
+            <af:selectOneChoice value="#{row.bindings.TransferStatus.inputValue}"
+                                label="#{row.bindings.TransferStatus.label}"
+                                required="#{bindings.BmCntrConfirm1.hints.TransferStatus.mandatory}"
+                                shortDesc="#{bindings.BmCntrConfirm1.hints.TransferStatus.tooltip}"
+                                id="soc1" readOnly="true" autoSubmit="true">
+              <f:selectItems value="#{row.bindings.TransferStatus.items}"
+                             id="si1"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column id="c11"
+                     headerText="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.label}"
+                     align="center" width="170" sortable="true"
+                     sortProperty="FinConfirmDocumentNumber">
+            <af:inputText value="#{row.bindings.FinConfirmDocumentNumber.inputValue}"
+                          label="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.label}"
+                          required="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.mandatory}"
+                          columns="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.displayWidth}"
+                          maximumLength="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.precision}"
+                          shortDesc="#{bindings.BmCntrConfirm1.hints.FinConfirmDocumentNumber.tooltip}"
+                          id="it2" readOnly="true" autoSubmit="true">
+              <f:validator binding="#{row.bindings.FinConfirmDocumentNumber.validator}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelBox text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirmQuery.confirmTitle']}"
+                        id="ph1">
+          <af:query id="qryId1"
+                    headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.Query.queryTitle']}"
+                    disclosed="true"
+                    value="#{bindings.BmCntrConfirmVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.BmCntrConfirmVOCriteriaQuery.queryModel}"
+                    queryOperationListener="#{bindings.BmCntrConfirmVOCriteriaQuery.processQueryOperation}"
+                    saveQueryMode="hidden" modeChangeVisible="false"
+                    resultComponentId="::pc1:t1" rows="1" maxColumns="3"
+                    queryListener="#{backingBeanScope.cntrMeasureConfirmBean.processQuery}"/>
+        </af:panelBox>
+        <af:spacer width="10" height="10" id="s2"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <af:popup id="p1"
+            binding="#{backingBeanScope.cntrMeasureConfirmBean.confirmDatePopup}"
+            popupFetchListener="#{backingBeanScope.cntrMeasureConfirmBean.cleanTransferDateListener}"
+            contentDelivery="lazyUncached">
+    <af:dialog id="d1"
+               dialogListener="#{backingBeanScope.cntrMeasureConfirmBean.transferListener}"
+               title="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureConfirm.popupTitle']}">
+      <af:inputDate label="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirm.confirmDate']}"
+                    id="id1"
+                    binding="#{backingBeanScope.cntrMeasureConfirmBean.confirmDate}"
+                    required="true"/>
+    </af:dialog>
+  </af:popup>
+</jsp:root>

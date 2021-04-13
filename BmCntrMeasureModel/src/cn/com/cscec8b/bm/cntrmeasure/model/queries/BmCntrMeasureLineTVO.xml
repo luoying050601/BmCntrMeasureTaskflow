@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BmCntrMeasureLineTVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVORowImpl"
+  ComponentClass="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVOImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomViewDefImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="BmCntrMeasureListLovVO1"
+    ViewObjectName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.BmCntrMeasureListLovVO">
+    <ViewCriteriaUsage
+      Name="BmCntrMeasureListLovVOCriteria"
+      FullName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.BmCntrMeasureListLovVO.BmCntrMeasureListLovVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="bv_listId">
+        <TransientExpression><![CDATA[CntrListHeaderId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="MtlUnitsOfMeasureLovVO1"
+    ViewObjectName="cn.com.cscec8b.common.model.queries.lovs.MtlUnitsOfMeasureLovVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="MtlUnitsOfMeasureLovVOCriteria"
+      FullName="cn.com.cscec8b.common.model.queries.lovs.MtlUnitsOfMeasureLovVO.MtlUnitsOfMeasureLovVOCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="BmCntrMeasureListHeaderLovVO1"
+    ViewObjectName="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.BmCntrMeasureListHeaderLovVO">
+    <ParameterMap>
+      <PIMap Variable="bv_cntrId">
+        <TransientExpression><![CDATA[BmCntrMeasureHeaderT.CntrId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PaTasksLovVO1"
+    ViewObjectName="cn.com.cscec8b.common.model.queries.lovs.PaTasksLovVO">
+    <ViewCriteriaUsage
+      Name="PaTasksLovVOCriteria"
+      FullName="cn.com.cscec8b.common.model.queries.lovs.PaTasksLovVO.PaTasksLovVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="bvProjectId">
+        <TransientExpression><![CDATA[BmCntrMeasureHeaderT.projectId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_CntrListName"
+    ListVOName="BmCntrMeasureListLovVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CntrListName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CntrListName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BudgetQuantity"/>
+      <Item Value="UnitPrice"/>
+      <Item Value="CumulativeQuantity"/>
+      <Item Value="TaskId"/>
+      <Item Value="CntrListUomCode"/>
+      <Item Value="ProductionProAmount"/>
+      <Item Value="CntrListLineId"/>
+      <Item Value="CntrListNumber"/>
+      <Item Value="TaskName"/>
+      <Item Value="TaskNumber"/>
+      <Item Value="LineTaxRate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CntrListName"/>
+      <Item Value="BudgetQuantity"/>
+      <Item Value="CntrPrice"/>
+      <Item Value="CumulativeQuantities"/>
+      <Item Value="TaskId"/>
+      <Item Value="Unit"/>
+      <Item Value="TransferRate"/>
+      <Item Value="CntrListLineId"/>
+      <Item Value="CntrListNumber"/>
+      <Item Value="TaskName"/>
+      <Item Value="TaskNumber"/>
+      <Item Value="LineTaxRate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CntrListName"/>
+      <Item Value="CntrListNumber"/>
+      <Item Value="CntrPrice"/>
+      <Item Value="BudgetQuantity"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="BmCntrMeasureListLovVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CntrListUomCode"
+    ListVOName="MtlUnitsOfMeasureLovVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CntrListUomCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UomCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UnitOfMeasure"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CntrListHeaderId"
+    ListVOName="BmCntrMeasureListHeaderLovVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CntrListHeaderId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CntrListHeaderId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ListName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CntrListNumber"
+    ListVOName="BmCntrMeasureListLovVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CntrListNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CntrListNumber"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="CntrListName"/>
+      <Item Value="BudgetQuantity"/>
+      <Item Value="CntrListLineId"/>
+      <Item Value="CumulativeQuantity"/>
+      <Item Value="UnitPrice"/>
+      <Item Value="TaskId"/>
+      <Item Value="ProductionProAmount"/>
+      <Item Value="CntrListUomCode"/>
+      <Item Value="LineTaxRate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CntrListNumber"/>
+      <Item Value="CntrListName"/>
+      <Item Value="BudgetQuantity"/>
+      <Item Value="CntrListLineId"/>
+      <Item Value="CumulativeQuantities"/>
+      <Item Value="CntrPrice"/>
+      <Item Value="TaskId"/>
+      <Item Value="TransferRate"/>
+      <Item Value="Unit"/>
+      <Item Value="LineTaxRate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CntrListNumber"/>
+      <Item Value="CntrListName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="BmCntrMeasureListLovVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TaskName"
+    ListVOName="PaTasksLovVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_TaskName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TaskName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="TaskId"/>
+      <Item Value="TaskNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TaskName"/>
+      <Item Value="TaskId"/>
+      <Item Value="TaskNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TaskNumber"/>
+      <Item Value="TaskName"/>
+      <Item Value="ParentNumber"/>
+      <Item Value="ParentName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="PaTasksLovVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[/*SELECT BCLH.CNTR_LIST_HEADER_ID,
+      BCLH.CNTR_LIST_NAME AS LIST_NAME,
+      NVL(BCLH.TAX_RATE, NULL)
+ FROM BM.BM_CNTR_LIST_HEADER_T BCLH
+WHERE BCLH.STATUS = 'CONFIRMED'
+  AND BCLH.CNTR_ID = :bv_cntrId;*/
+SELECT BMCNTRMEASURELINETEO.CNTR_MEASURE_LINE_ID,
+       BMCNTRMEASURELINETEO.CNTR_MEASURE_HEADER_ID,
+       BMCNTRMEASURELINETEO.LINE_NUM,
+       BMCNTRMEASURELINETEO.CNTR_LIST_LINE_ID,
+       BMCNTRMEASURELINETEO.CNTR_LIST_UOM_CODE,
+       BMCNTRMEASURELINETEO.BUDGET_QUANTITY,
+       BMCNTRMEASURELINETEO.CUMULATIVE_QUANTITY,
+       BMCNTRMEASURELINETEO.COMPLETION_PERCENTAGE,
+       BMCNTRMEASURELINETEO.ENGINEERING_QUANTITY,
+       BMCNTRMEASURELINETEO.UNIT_PRICE,
+       BMCNTRMEASURELINETEO.MEASURE_AMOUNT,
+       BMCNTRMEASURELINETEO.TASK_ID,
+       (SELECT DISTINCT PT.TASK_NAME
+          FROM APPS.PA_TASKS PT
+         WHERE PT.TASK_ID = BMCNTRMEASURELINETEO.TASK_ID) AS TASK_NAME,
+       (SELECT DISTINCT PT.TASK_NUMBER
+          FROM APPS.PA_TASKS PT
+         WHERE PT.TASK_ID = BMCNTRMEASURELINETEO.TASK_ID) AS TASK_NUMBER,
+       BMCNTRMEASURELINETEO.OBJECT_VERSION_NUMBER,
+       BMCNTRMEASURELINETEO.CREATION_DATE,
+       BMCNTRMEASURELINETEO.CREATED_BY,
+       BMCNTRMEASURELINETEO.LAST_UPDATED_BY,
+       BMCNTRMEASURELINETEO.LAST_UPDATE_DATE,
+       BMCNTRMEASURELINETEO.ATTRIBUTE_CATEGORY,
+       BMCNTRMEASURELINETEO.ATTRIBUTE1,
+       BMCNTRMEASURELINETEO.ATTRIBUTE2,
+       BMCNTRMEASURELINETEO.ATTRIBUTE3,
+       BMCNTRMEASURELINETEO.ATTRIBUTE4,
+       BMCNTRMEASURELINETEO.ATTRIBUTE5,
+       BMCNTRMEASURELINETEO.ATTRIBUTE6,
+       BMCNTRMEASURELINETEO.ATTRIBUTE7,
+       BMCNTRMEASURELINETEO.ATTRIBUTE8,
+       BMCNTRMEASURELINETEO.ATTRIBUTE9,
+       BMCNTRMEASURELINETEO.ATTRIBUTE10,
+       BMCNTRMEASURELINETEO.ATTRIBUTE11,
+       BMCNTRMEASURELINETEO.ATTRIBUTE12,
+       BMCNTRMEASURELINETEO.ATTRIBUTE13,
+       BMCNTRMEASURELINETEO.ATTRIBUTE14,
+       BMCNTRMEASURELINETEO.ATTRIBUTE15,
+       BMCNTRMEASURELINETEO.PRODUCTION_PRO_AMOUNT,
+       BMCNTRLISTLINETEO.CNTR_LIST_HEADER_ID AS CNTR_LIST_HEADER_ID,
+       NVL(CLH.TAX_RATE, NULL) LINE_TAX_RATE,
+       BMCNTRLISTLINETEO.CNTR_LIST_NAME AS CNTR_LIST_NAME,
+       BMCNTRLISTLINETEO.CNTR_LIST_NUMBER
+  FROM BM.BM_CNTR_MEASURE_LINE_T BMCNTRMEASURELINETEO,
+       BM.BM_CNTR_LIST_LINE_T    BMCNTRLISTLINETEO,
+       BM.BM_CNTR_LIST_HEADER_T  CLH
+ WHERE BMCNTRLISTLINETEO.CNTR_LIST_LINE_ID(+) =
+       BMCNTRMEASURELINETEO.CNTR_LIST_LINE_ID
+   AND CLH.CNTR_LIST_HEADER_ID =
+       BMCNTRLISTLINETEO.CNTR_LIST_HEADER_ID]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="BmCntrMeasureLineTEO"
+    Entity="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO"/>
+  <ViewAttribute
+    Name="CntrMeasureLineId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CntrMeasureLineId"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CNTR_MEASURE_LINE_ID"/>
+  <ViewAttribute
+    Name="CntrMeasureHeaderId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CntrMeasureHeaderId"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CNTR_MEASURE_HEADER_ID"/>
+  <ViewAttribute
+    Name="LineNum"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LineNum"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="LINE_NUM"/>
+  <ViewAttribute
+    Name="CntrListLineId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CntrListLineId"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CNTR_LIST_LINE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrListUomCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CntrListUomCode"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CNTR_LIST_UOM_CODE"
+    LOVName="LOV_CntrListUomCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListUomCode_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListUomCode_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetQuantity"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BudgetQuantity"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="BUDGET_QUANTITY"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.BudgetQuantity_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.BudgetQuantity_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CumulativeQuantity"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CumulativeQuantity"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CUMULATIVE_QUANTITY"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CumulativeQuantity_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CumulativeQuantity_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CompletionPercentage"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CompletionPercentage"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="COMPLETION_PERCENTAGE"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CompletionPercentage_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CompletionPercentage_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EngineeringQuantity"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EngineeringQuantity"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ENGINEERING_QUANTITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.EngineeringQuantity_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.EngineeringQuantity_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitPrice"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitPrice"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="UNIT_PRICE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.UnitPrice_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.UnitPrice_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MeasureAmount"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MeasureAmount"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="MEASURE_AMOUNT"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.MeasureAmount_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.MeasureAmount_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaskId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TaskId"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="TASK_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskId_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskId_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaskName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TASK_NAME"
+    Expression="TASK_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_TaskName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaskNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TASK_NUMBER"
+    Expression="TASK_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.TaskNumber_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ObjectVersionNumber"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="OBJECT_VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE1"
+    DefaultValue="N"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute11"
+    PrecisionRule="true"
+    EntityAttrName="Attribute11"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE11"/>
+  <ViewAttribute
+    Name="Attribute12"
+    PrecisionRule="true"
+    EntityAttrName="Attribute12"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE12"/>
+  <ViewAttribute
+    Name="Attribute13"
+    PrecisionRule="true"
+    EntityAttrName="Attribute13"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE13"/>
+  <ViewAttribute
+    Name="Attribute14"
+    PrecisionRule="true"
+    EntityAttrName="Attribute14"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE14"/>
+  <ViewAttribute
+    Name="Attribute15"
+    PrecisionRule="true"
+    EntityAttrName="Attribute15"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="ATTRIBUTE15"/>
+  <ViewAttribute
+    Name="ProductionProAmount"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductionProAmount"
+    EntityUsage="BmCntrMeasureLineTEO"
+    AliasName="PRODUCTION_PRO_AMOUNT"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrListHeaderId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CNTR_LIST_HEADER_ID"
+    Expression="CNTR_LIST_HEADER_ID"
+    SQLType="NUMERIC"
+    LOVName="LOV_CntrListHeaderId">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListHeaderId_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListHeaderId_TOOLTIP"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LineTaxRate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LINE_TAX_RATE"
+    Expression="LINE_TAX_RATE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrListName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="2000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CNTR_LIST_NAME"
+    Expression="CNTR_LIST_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_CntrListName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListName_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListName_TOOLTIP"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CntrListNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="400"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CNTR_LIST_NUMBER"
+    Expression="CNTR_LIST_NUMBER"
+    SQLType="VARCHAR"
+    LOVName="LOV_CntrListNumber">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="400"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListNumber_LABEL"/>
+        <TOOLTIP
+          ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureLineTVO.CntrListNumber_TOOLTIP"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="BmCntrMeasureHeaderT"
+    ViewLink="cn.com.cscec8b.bm.cntrmeasure.model.queries.links.CntrMeasureHeaderToLinesLinks"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

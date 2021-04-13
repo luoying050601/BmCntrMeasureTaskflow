@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BmCntrMeasureListHeaderLovVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="cn.com.cscec8b.framework.model.common.CustomViewRowImpl"
+  ComponentClass="cn.com.cscec8b.framework.model.common.CustomViewObjectImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomViewDefImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.lov.BmCntrMeasureListHeaderLovVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bv_cntrId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery>
+    <![CDATA[SELECT BCLH.CNTR_LIST_HEADER_ID,
+       BCLH.CNTR_LIST_NAME AS LIST_NAME,
+       NVL(BCLH.TAX_RATE, NULL)  as TAX_RATE
+  FROM BM.BM_CNTR_LIST_HEADER_T BCLH
+ WHERE BCLH.STATUS = 'CONFIRMED'
+   AND BCLH.CNTR_ID = :bv_cntrId]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="CntrListHeaderId"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CNTR_LIST_HEADER_ID"
+    Expression="CNTR_LIST_HEADER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ListName"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LIST_NAME"
+    Expression="LIST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TAX_RATE"
+    Expression="TAX_RATE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NvlBclhTaxRateNull"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NVL(BCLH.TAX_RATE,NULL)"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CntrListHeaderId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

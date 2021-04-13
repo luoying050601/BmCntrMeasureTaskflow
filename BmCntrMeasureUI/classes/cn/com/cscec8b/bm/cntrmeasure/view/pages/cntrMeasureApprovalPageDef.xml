@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureApprovalPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.cscec8bTemplatePageDef" id="pageTemplateBinding"
+          Refresh="ifNeeded"/>
+    <taskFlow id="bmcntrmeasureapprovaltaskflow1"
+              taskFlowId="/WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-approval-taskflow.xml#bm-cntr-measure-approval-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="headerId" value="10000"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

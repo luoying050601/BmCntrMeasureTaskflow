@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="bmcntrmeasureuiBundle"
+         value="#{adfBundle['cn.com.cscec8b.bm.cntrmeasure.view.BmCntrMeasureUIBundle']}"/>
+  <af:panelStretchLayout id="psl1" startWidth="auto" endWidth="auto"
+                         topHeight="auto" bottomHeight="auto"
+                         binding="#{backingBeanScope.cntrMeasureConfirmBean.historyLayout}">
+    <f:facet name="center">
+      <af:panelCollection id="pc1" featuresOff="detach statusBar"
+                          styleClass="AFStretchWidth">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t3">
+            <af:commandToolbarButton text="导出" id="ctb1">
+              <af:exportCollectionActionListener exportedId="t1"
+                                                 type="excelHTML"
+                                                 filename="总包传送纪录.xls"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.BmCntrFinConfirmT1.collectionModel}"
+                  var="row" rows="#{bindings.BmCntrFinConfirmT1.rangeSize}"
+                  emptyText="#{bindings.BmCntrFinConfirmT1.viewable ? '无显示数据' : '权限拒绝'}"
+                  fetchSize="#{bindings.BmCntrFinConfirmT1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.BmCntrFinConfirmT1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BmCntrFinConfirmT1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" varStatus="vs"
+                  filterModel="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.queryDescriptor}"
+                  queryListener="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.processQuery}"
+                  binding="#{backingBeanScope.cntrMeasureConfirmBean.historyTable}">
+          <af:column id="c14" width="5" rowHeader="true" headerText=""/>
+          <af:column id="c13"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureDetailQuery.lineTitle']}"
+                     width="50" sortable="true" align="center">
+            <af:outputText value="#{vs.index+1}" id="ot13"/>
+          </af:column>
+          <af:column sortProperty="DocumentNumber" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.DocumentNumber.label}"
+                     id="c1" width="170" align="center" filterable="true">
+            <af:outputText value="#{row.DocumentNumber}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="ConfirmDate" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.ConfirmDate.label}"
+                     id="c11" filterable="true" width="120">
+            <af:outputText value="#{row.ConfirmDate}" id="ot5">
+              <af:convertDateTime pattern="#{bindings.BmCntrFinConfirmT1.hints.ConfirmDate.format}"/>
+            </af:outputText>
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.ConfirmDate}" id="id1"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="VerifyStartDate" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.VerifyStartDate.label}"
+                     id="c2" filterable="true" width="120">
+            <af:outputText value="#{row.VerifyStartDate}" id="ot6">
+              <af:convertDateTime pattern="#{bindings.BmCntrFinConfirmT1.hints.VerifyStartDate.format}"/>
+            </af:outputText>
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.VerifyStartDate}"
+                            id="id4"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="VerifyEndDate" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.VerifyEndDate.label}"
+                     id="c7" filterable="true" width="120">
+            <af:outputText value="#{row.VerifyEndDate}" id="ot9">
+              <af:convertDateTime pattern="#{bindings.BmCntrFinConfirmT1.hints.VerifyEndDate.format}"/>
+            </af:outputText>
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.VerifyEndDate}"
+                            id="id2"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="VerifyDocumentNumber" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.VerifyDocumentNumber.label}"
+                     id="c4" width="170" align="center" filterable="true">
+            <af:outputText value="#{row.VerifyDocumentNumber}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="ActualConfirmDate" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.ActualConfirmDate.label}"
+                     id="c6" filterable="true" width="120">
+            <af:outputText value="#{row.ActualConfirmDate}" id="ot8">
+              <af:convertDateTime pattern="#{bindings.BmCntrFinConfirmT1.hints.ActualConfirmDate.format}"/>
+            </af:outputText>
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.ActualConfirmDate}"
+                            id="id3"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="OwerConfirmQuantity" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.OwerConfirmQuantity.label}"
+                     id="c5" align="right" filterable="true" width="150">
+            <af:outputText value="#{row.OwerConfirmQuantity}" id="ot10">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                type="number"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="CumulativeConfirmAmount" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.CumulativeConfirmAmount.label}"
+                     id="c10" align="right" filterable="true" width="150">
+            <af:outputText value="#{row.CumulativeConfirmAmount}" id="ot11">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                type="number"/>
+            </af:outputText>
+          </af:column>
+          <af:column id="c12"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirm.leftConfirmAmount']}"
+                     sortable="true" sortProperty="OwerConfirmQuantity"
+                     align="right" filterable="true" width="150">
+            <af:outputText value="#{row.LeftConfirmAmount}" id="ot12">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                type="number"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="ConfirmAmount" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.ConfirmAmount.label}"
+                     id="c8" align="right" filterable="true" width="150">
+            <af:outputText value="#{row.ConfirmAmount}" id="ot1">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                type="number"/>
+            </af:outputText>
+          </af:column>
+          <af:column id="c15"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.InvoiceNumber.label}"
+                     width="120" align="center" sortProperty="InvoiceNumber"
+                     filterable="true" sortable="false">
+            <af:outputText value="#{row.InvoiceNumber}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="TransferStatus" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.TransferStatus.label}"
+                     id="c9" align="center" filterable="true">
+            <af:selectOneChoice value="#{row.bindings.TransferStatus.inputValue}"
+                                label="#{row.bindings.TransferStatus.label}"
+                                required="#{bindings.BmCntrFinConfirmT1.hints.TransferStatus.mandatory}"
+                                shortDesc="#{bindings.BmCntrFinConfirmT1.hints.TransferStatus.tooltip}"
+                                id="soc1" readOnly="true">
+              <f:selectItems value="#{row.bindings.TransferStatus.items}"
+                             id="si1"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="TransferErrorMsg" sortable="true"
+                     headerText="#{bindings.BmCntrFinConfirmT1.hints.TransferErrorMsg.label}"
+                     id="c3" filterable="true" width="200">
+            <af:outputText value="#{row.TransferErrorMsg}" id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrFinConfirmT1.hints.TransferErrorMsg.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl3" halign="left" layout="vertical">
+        <af:panelBox text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrConfirmQuery.queryTitle']}"
+                        id="ph1">
+          <af:query id="qryId1"
+                    headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.Query.queryTitle']}"
+                    disclosed="true"
+                    value="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.BmCntrFinConfirmTVOCriteriaQuery.processQueryOperation}"
+                    saveQueryMode="hidden" modeChangeVisible="false" rows="2"
+                    maxColumns="3" resultComponentId="::pc1:t1">
+            <f:facet name="toolbar">
+              <af:toolbar id="t2"/>
+            </f:facet>
+          </af:query>
+          <f:facet name="toolbar">
+            <af:toolbar id="t4">
+              <af:commandToolbarButton id="ctb4"
+                                       text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyCheckDetail.back']}"
+                                       immediate="true"
+                                       actionListener="#{backingBeanScope.cntrMeasureConfirmBean.returnConfirmActionListener}"
+                                       rendered="#{pageFlowScope.authorityType eq 'VIEW'}"/>
+            </af:toolbar>
+          </f:facet>
+        </af:panelBox>
+        <af:spacer width="10" height="10" id="s1"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

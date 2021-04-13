@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureCheckDetailPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrVerifyHeaderT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrVerifyHeaderT1Iterator"/>
+    <iterator Binds="BmCntrVerifyLineT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrVerifyLineT1Iterator"/>
+    <iterator Binds="BmCntrMeasureHeaderT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrMeasureHeaderT1Iterator"/>
+    <searchRegion Criteria="BmCntrMeasureHeaderForVerifyCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrMeasureHeaderT1Iterator"
+                  id="BmCntrMeasureHeaderForVerifyCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="CntrMeasureAMDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="CntrMeasureAMDataControl"/>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="VerifyStartDate">
+      <AttrNames>
+        <Item Value="VerifyStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BmCntrVerifyHeaderT1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator" id="CntrName">
+      <AttrNames>
+        <Item Value="CntrName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="DocumentNumber">
+      <AttrNames>
+        <Item Value="DocumentNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ProjectNumber">
+      <AttrNames>
+        <Item Value="ProjectNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CntrConfirmDate">
+      <AttrNames>
+        <Item Value="CntrConfirmDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ActualConfirmDate">
+      <AttrNames>
+        <Item Value="ActualConfirmDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CntrPaymentDate">
+      <AttrNames>
+        <Item Value="CntrPaymentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ActualOutput">
+      <AttrNames>
+        <Item Value="ActualOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CntrPaymentAmount">
+      <AttrNames>
+        <Item Value="CntrPaymentAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CntrVisaConfirmQuantity">
+      <AttrNames>
+        <Item Value="CntrVisaConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="LaborAmount">
+      <AttrNames>
+        <Item Value="LaborAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="OtherSubcntrOutput">
+      <AttrNames>
+        <Item Value="OtherSubcntrOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="OwerConfirmQuantity">
+      <AttrNames>
+        <Item Value="OwerConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="PreparedDate">
+      <AttrNames>
+        <Item Value="PreparedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ProSubcntrOutput">
+      <AttrNames>
+        <Item Value="ProSubcntrOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="SecurityAmount">
+      <AttrNames>
+        <Item Value="SecurityAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BmCntrVerifyLineT1Iterator" id="BmCntrVerifyLineT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrVerifyLineTVO"
+                      Name="BmCntrVerifyLineT10">
+        <AttrNames>
+          <Item Value="DocumentNumber"/>
+          <Item Value="ProductionTotal"/>
+          <Item Value="PreparedBy"/>
+          <Item Value="PreparedDate"/>
+          <Item Value="ProductionProSubcntr"/>
+          <Item Value="PreparedByName"/>
+          <Item Value="MeasureDate"/>
+          <Item Value="ProSubcntrFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="BmCntrMeasureHeaderT1Iterator"
+          id="BmCntrMeasureHeaderT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureHeaderTVO"
+                      Name="BmCntrMeasureHeaderT10">
+        <AttrNames>
+          <Item Value="DocumentNumber"/>
+          <Item Value="Status"/>
+          <Item Value="CustomerName"/>
+          <Item Value="PreparedBy"/>
+          <Item Value="PreparedDate"/>
+          <Item Value="ProductionTotal"/>
+          <Item Value="CntrMeasureHeaderId"/>
+          <Item Value="OtherSubcntrOutput"/>
+          <Item Value="ProductionProSubcntr"/>
+          <Item Value="PreparedByName"/>
+          <Item Value="CheckedFlag" Binds="CheckedFlag"/>
+          <Item Value="MeasureDate"/>
+          <Item Value="ProSubcntrFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="BmCntrVerifyLineT1Iterator"
+                     id="ProductionProSubcntr">
+      <AttrNames>
+        <Item Value="ProductionProSubcntr"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="checkValidateMeasureHeader"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="checkValidateMeasureHeader"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.checkValidateMeasureHeader_CntrMeasureAMDataControl_dataProvider_checkValidateMeasureHeader_result">
+      <NamedData NDName="cntrMeasureHeaderId" NDType="int"/>
+    </methodAction>
+    <methodAction id="updateSelectedRowAccountFlag"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="updateSelectedRowAccountFlag"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.updateSelectedRowAccountFlag_CntrMeasureAMDataControl_dataProvider_updateSelectedRowAccountFlag_result">
+      <NamedData NDName="measureHeaderIds" NDType="java.util.List"/>
+    </methodAction>
+    <action IterBinding="BmCntrVerifyHeaderT1Iterator" id="Delete"
+            InstanceName="CntrMeasureAMDataControl.BmCntrVerifyHeaderT1"
+            DataControl="CntrMeasureAMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="BmCntrVerifyLineT1Iterator" id="CreateInsert"
+            InstanceName="CntrMeasureAMDataControl.BmCntrVerifyLineT1"
+            DataControl="CntrMeasureAMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="PreparedByName">
+      <AttrNames>
+        <Item Value="PreparedByName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="generateDocumentNumber"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="generateDocumentNumber" IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.generateDocumentNumber_CntrMeasureAMDataControl_dataProvider_generateDocumentNumber_result">
+      <NamedData NDName="documentType" NDType="java.lang.String"/>
+      <NamedData NDName="cntrId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CustomerName">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="BmCntrVerifyHeaderT1Iterator"
+                  Uses="LOV_CntrNumber" id="CntrNumber"/>
+    <button IterBinding="BmCntrMeasureHeaderT1Iterator" id="CheckedFlag"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CheckedFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="VerifyEndDate">
+      <AttrNames>
+        <Item Value="VerifyEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CntrVerifyHeaderId">
+      <AttrNames>
+        <Item Value="CntrVerifyHeaderId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CumulativeActualOutput">
+      <AttrNames>
+        <Item Value="CumulativeActualOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getCumulativeActualOutput"
+                  InstanceName="CntrMeasureAMDataControl.dataProvider"
+                  DataControl="CntrMeasureAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getCumulativeActualOutput"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CntrMeasureAMDataControl.methodResults.getCumulativeActualOutput_CntrMeasureAMDataControl_dataProvider_getCumulativeActualOutput_result">
+      <NamedData NDName="cntrId" NDType="int"/>
+    </methodAction>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="CumulativeWithholdAmount">
+      <AttrNames>
+        <Item Value="CumulativeWithholdAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="ConfirmValue">
+      <AttrNames>
+        <Item Value="ConfirmValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountTj">
+      <AttrNames>
+        <Item Value="MajorAmountTj"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountAz">
+      <AttrNames>
+        <Item Value="MajorAmountAz"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountZs">
+      <AttrNames>
+        <Item Value="MajorAmountZs"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountGjg">
+      <AttrNames>
+        <Item Value="MajorAmountGjg"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountZnh">
+      <AttrNames>
+        <Item Value="MajorAmountZnh"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrVerifyHeaderT1Iterator"
+                     id="MajorAmountOthers">
+      <AttrNames>
+        <Item Value="MajorAmountOthers"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

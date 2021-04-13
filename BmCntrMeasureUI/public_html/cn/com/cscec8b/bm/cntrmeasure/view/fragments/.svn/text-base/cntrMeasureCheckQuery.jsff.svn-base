@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="bmcntrmeasureuiBundle"
+         value="#{adfBundle['cn.com.cscec8b.bm.cntrmeasure.view.BmCntrMeasureUIBundle']}"/>
+  <af:panelStretchLayout id="psl1" startWidth="auto" endWidth="auto"
+                         topHeight="auto" bottomHeight="auto">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1" featuresOff="detach statusBar">
+        <f:facet name="menus"/>
+        <f:facet name="statusbar"/>
+    
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:panelGroupLayout id="pgl12" layout="horizontal">
+              <af:commandToolbarButton text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyQuery.goCreate']}"
+                                       id="ctb1"
+                                       actionListener="#{bindings.CreateInsert.execute}"
+                                       disabled="#{!bindings.CreateInsert.enabled}"
+                                       action="goDetail"
+                                       styleClass="stress_button"
+                                       rendered="#{pageFlowScope.authorityType eq 'EDIT'}"/>
+              <af:commandToolbarButton text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerfiyCheck.export']}"
+                                       id="ctb2"
+                                       styleClass="stress_button">
+                <af:fileDownloadActionListener contentType="application/vnd.ms-excel"
+                                               filename="总包核量台账.xls"
+                                               method="#{backingBeanScope.CntrMeasureCheckDetailExportExcelBean.exportExcelActionListener}"/>
+              </af:commandToolbarButton>
+              <f:facet name="separator">
+                <af:spacer width="10" height="10" id="s2"/>
+              </f:facet>
+            </af:panelGroupLayout>
+          </af:toolbar>
+        </f:facet>
+        <af:table value="#{bindings.BmCntrVerifyHeaderT1.collectionModel}"
+                  var="row" rows="#{bindings.BmCntrVerifyHeaderT1.rangeSize}"
+                  emptyText="#{bindings.BmCntrVerifyHeaderT1.viewable ?  '无显示数据' : '权限拒绝'}"
+                  fetchSize="#{bindings.BmCntrVerifyHeaderT1.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.queryDescriptor}"
+                  queryListener="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.processQuery}" varStatus="vs"
+                  selectedRowKeys="#{bindings.BmCntrVerifyHeaderT1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BmCntrVerifyHeaderT1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" partialTriggers="::ctb1">
+               <af:column id="c677" width="5" rowHeader="true" headerText=""/>
+          <af:column id="c375"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyQuery.lineNum']}"
+                     width="40" align="center">
+            <af:outputText value="#{vs.index+1}" id="ot761"/>
+            <f:facet name="footer">
+              <af:outputText value="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasure.count']}"
+                             id="ot764"
+                             rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}"/>
+            </f:facet>
+          </af:column>
+            <af:column id="c5" align="center"
+                     headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasureApplyQuery.operation']}"
+                     width="70"
+                       rendered="#{pageFlowScope.authorityType eq 'EDIT'}">
+            <af:commandImageLink id="cil1"
+                                 rendered="#{row.bindings.Status.attributeValue eq'EDIT'}"
+                                 icon="/images/icons/edit_enable.png"
+                                 action="goDetail"
+                                 text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrMeasure.editText']}"/>
+          </af:column>
+          <af:column sortProperty="DocumentNumber" filterable="true"
+                     sortable="true" width="170" align="center" 
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.DocumentNumber.label}"
+                     id="c29">
+ <af:commandLink text="#{row.DocumentNumber}" id="cl1"
+                            action="goDetail">
+              <af:setPropertyListener from="true"
+                                      to="#{pageFlowScope.disableAction}"
+                                      type="action"/>
+            </af:commandLink>
+          </af:column>
+          <af:column sortProperty="VerifyStartDate" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.VerifyStartDate.label}"
+                     id="c30">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.VerifyStartDate}"
+                            id="id7"/>
+            </f:facet>
+            <af:outputText value="#{row.VerifyStartDate}" id="ot13">
+              <af:convertDateTime pattern="#{bindings.BmCntrVerifyHeaderT1.hints.VerifyStartDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="VerifyEndDate" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.VerifyEndDate.label}"
+                     id="c33">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.VerifyEndDate}"
+                            id="id3"/>
+            </f:facet>
+            <af:outputText value="#{row.VerifyEndDate}" id="ot14">
+              <af:convertDateTime pattern="#{bindings.BmCntrVerifyHeaderT1.hints.VerifyEndDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="ActualOutput" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.ActualOutput.label}"
+                     id="c12" align="right" width="150">
+            <af:outputText value="#{row.ActualOutput}" id="ot32">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>                   
+            </af:outputText>
+            
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl2" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentActualOutput.inputValue}"
+                               id="ot220" partialTriggers="ot32"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column id="c4"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.CumulativeActualOutput.label}"
+                     align="right" width="150">
+            <af:outputText value="#{row.CumulativeActualOutput}" id="ot4">
+          <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="ProSubcntrOutput" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.ProSubcntrOutput.label}"
+                     id="c37" align="right" width="150">
+            <af:outputText value="#{row.ProSubcntrOutput}" id="ot23">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+             </af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl3" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentProSubcntrOutput.inputValue}"
+                               id="ot21" partialTriggers="ot23"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet> 
+             
+             
+          </af:column>
+          <af:column sortProperty="OwerConfirmQuantity" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.OwerConfirmQuantity.label}"
+                     id="c39" align="right" width="150">
+            <af:outputText value="#{row.OwerConfirmQuantity}" id="ot19">
+  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+           </af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl4" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentOwnerConfirmQuantities.inputValue}"
+                               id="ot2776" partialTriggers="ot19"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+           
+           
+          </af:column>
+          <af:column sortProperty="OtherSubcntrOutput" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.OtherSubcntrOutput.label}"
+                     id="c14" align="right" width="150">
+            <af:outputText value="#{row.OtherSubcntrOutput}" id="ot16">
+            <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+           </af:outputText>
+             <f:facet name="footer">
+              <af:panelGroupLayout id="pgl5" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentOtherSubCntrOutput.inputValue}"
+                               id="ot5" partialTriggers="ot16"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+            
+            
+          </af:column>
+          <af:column sortProperty="CntrVisaConfirmQuantity" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.CntrVisaConfirmQuantity.label}"
+                     id="c8" align="right" width="150">
+            <af:outputText value="#{row.CntrVisaConfirmQuantity}" id="ot20">
+                      <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl11" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}"
+                                   halign="right">
+                <af:outputText value="#{bindings.CurrentVisaConfirmQuantity.inputValue}" id="ot3"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}"
+                               partialTriggers="ot20">
+                                   <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                               </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="CntrConfirmDate" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.CntrConfirmDate.label}"
+                     id="c3">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.CntrConfirmDate}"
+                            id="id1"/>
+            </f:facet>
+            <af:outputText value="#{row.CntrConfirmDate}" id="ot28">
+              <af:convertDateTime pattern="#{bindings.BmCntrVerifyHeaderT1.hints.CntrConfirmDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="CntrPaymentAmount" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.CntrPaymentAmount.label}"
+                     id="c36" align="right" width="150">
+            <af:outputText value="#{row.CntrPaymentAmount}" id="ot10">
+               <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+            
+             <f:facet name="footer">
+              <af:panelGroupLayout id="pgl6" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentCntrPaymentAmount.inputValue}"
+                               id="ot2323" partialTriggers="ot10"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="LaborAmount" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.LaborAmount.label}"
+                     id="c9" align="right" width="150">
+            <af:outputText value="#{row.LaborAmount}" id="ot2">
+             <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+            
+            
+              <f:facet name="footer">
+              <af:panelGroupLayout id="pgl7" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentLaborAmount.inputValue}"
+                               id="ot24" partialTriggers="ot2"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="SecurityAmount" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.SecurityAmount.label}"
+                     id="c32" align="right" width="150">
+            <af:outputText value="#{row.SecurityAmount}" id="ot1">
+              <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+           </af:outputText>
+             <f:facet name="footer">
+              <af:panelGroupLayout id="pgl8" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentSecurityAmount.inputValue}"
+                               id="ot2633" partialTriggers="ot1"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+            
+          </af:column>
+          <af:column headerText="#{bindings.BmCntrVerifyHeaderT1.hints.CumulativeWithholdAmount.label}"
+                     id="c6" width="150" align="right">
+            <af:outputText value="#{row.CumulativeWithholdAmount}" id="ot6">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrVerifyHeaderT1.hints.CumulativeWithholdAmount.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column id="c2"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.ConfirmValue.label}" width="105"
+                     align="right">
+            <af:outputText value="#{row.ConfirmValue}" id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.BmCntrVerifyHeaderT1.hints.ConfirmValue.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="AlreadyConfirmAmount" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.AlreadyConfirmAmount.label}"
+                     id="c1" align="right" width="150">
+            <af:outputText value="#{row.AlreadyConfirmAmount}" id="ot17">
+          <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+             <f:facet name="footer">
+              <af:panelGroupLayout id="pgl9" halign="right" layout="horizontal"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                <af:outputText value="#{bindings.CurrentAlreadyConfirmAmount.inputValue}"
+                               id="ot29" partialTriggers="ot17" 
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="LeftConfirmAmount" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.LeftConfirmAmount.label}"
+                     id="c35" align="right" width="150">
+            <af:outputText value="#{row.LeftConfirmAmount}" id="ot214">
+               <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+            </af:outputText>
+            
+             <f:facet name="footer">
+              <af:panelGroupLayout id="pgl10" halign="right"
+                                   rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}"
+                                   layout="horizontal">
+                <af:outputText value="#{bindings.CurrentLeftConfirmAmount.inputValue}"
+                               id="ot30" partialTriggers="ot214"
+                               rendered="#{bindings.BmCntrVerifyHeaderT1.estimatedRowCount>0}">
+                  <af:convertNumber maxFractionDigits="2" minFractionDigits="2"
+                                    type="number"/>
+                </af:outputText>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="Status" sortable="true"
+                     headerText="#{bindings.BmCntrVerifyHeaderT1.hints.Status.label}"
+                     id="c18" filterable="true">
+            <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                label="#{row.bindings.Status.label}"
+                                required="#{bindings.BmCntrVerifyHeaderT1.hints.Status.mandatory}"
+                                shortDesc="#{bindings.BmCntrVerifyHeaderT1.hints.Status.tooltip}"
+                                id="soc1" readOnly="true">
+              <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+            </af:selectOneChoice>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelBox text="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.cntrVerifyQuery.queryTitle']}" id="ph1">
+          <af:query id="qryId1"
+                    headerText="#{bmcntrmeasureuiBundle['cn.com.cscec8b.bm.bmCntrMeasureTaskflow.view.fragments.Query.queryTitle']}" disclosed="true"
+                    value="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.BmCntrVerifyHeaderTVOCriteriaQuery.processQueryOperation}"
+                    saveQueryMode="hidden" modeChangeVisible="false" rows="2"
+                    maxColumns="3" resultComponentId="::pc1:t1"/>
+        </af:panelBox>
+        <af:spacer width="10" height="10" id="s1"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl2" layout="scroll" styleClass="AFStretchWidth">
+    <af:showDetailHeader text="提示" disclosed="true" id="sdh1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar"/>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+        <af:spacer width="10" height="30" id="s1"/>
+        <af:image source="/cn/com/cscec8b/bm/cntrmeasure/view/images/DocNoFound.png" shortDesc="当前单据不存在或已失效"
+                  id="i1"/>
+        <af:spacer width="10" height="30" id="s2"/>
+      </af:panelGroupLayout>
+    </af:showDetailHeader>
+  </af:panelGroupLayout>
+</jsp:root>

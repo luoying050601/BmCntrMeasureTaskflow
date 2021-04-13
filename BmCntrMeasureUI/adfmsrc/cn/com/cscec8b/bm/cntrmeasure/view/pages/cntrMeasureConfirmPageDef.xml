@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureConfirmPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.cscec8bTemplatePageDef" id="pageTemplateBinding"
+          Refresh="ifNeeded"/>
+    <taskFlow id="bmcntrmeasureconfirmtaskflow1"
+              taskFlowId="/WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-confirm-taskflow.xml#bm-cntr-measure-confirm-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cntrMeasureApplyQueryPageDef"
+                Package="cn.com.cscec8b.bm.cntrmeasure.view.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmCntrMeasureHeaderT1" RangeSize="25"
+              DataControl="CntrMeasureAMDataControl"
+              id="BmCntrMeasureHeaderT1Iterator"/>
+    <searchRegion Criteria="BmCntrMeasureHeaderTVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="BmCntrMeasureHeaderT1Iterator"
+                  id="BmCntrMeasureHeaderTVOCriteriaQuery" Refresh="ifNeeded"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BmCntrMeasureHeaderT1Iterator"
+          id="BmCntrMeasureHeaderT1">
+      <nodeDefinition DefName="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureHeaderTVO"
+                      Name="BmCntrMeasureHeaderT10">
+        <AttrNames>
+          <Item Value="PreparedDate"/>
+          <Item Value="MeasureDate"/>
+          <Item Value="ProductionTotal"/>
+          <Item Value="CvhDocno"/>
+          <Item Value="VerifyStartDate"/>
+          <Item Value="VerifyEndDate"/>
+          <Item Value="OwerConfirmQuantity"/>
+          <Item Value="OtherSubcntrOutput"/>
+          <Item Value="CntrVisaConfirmQuantity"/>
+          <Item Value="Status"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="ProSubcntrFlag"/>
+          <Item Value="CumulativeProductionAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="BmCntrMeasureHeaderT1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="SumProductionTotal">
+      <AttrNames>
+        <Item Value="SumProductionTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="SumOtherSubcntrOutput">
+      <AttrNames>
+        <Item Value="SumOtherSubcntrOutput"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="SumOwerConfirmQuantity">
+      <AttrNames>
+        <Item Value="SumOwerConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmCntrMeasureHeaderT1Iterator"
+                     id="SumCntrVisaConfirmQuantity">
+      <AttrNames>
+        <Item Value="SumCntrVisaConfirmQuantity"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-confirm-history-taskflow.xml" id="bm-cntr-measure-confirm-history-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="authorityType"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-apply-taskflow.xml" id="bm-cntr-measure-apply-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="authority"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-check-taskflow.xml" id="bm-cntr-measure-check-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="authorityType"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-approval-taskflow.xml" id="bm-cntr-measure-approval-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="headerId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-confirm-taskflow.xml" id="bm-cntr-measure-confirm-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="authorityType"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/cn/com/cscec8b/bm/cntrmeasure/view/taskflows/bm-cntr-measure-detail-query-taskflow.xml" id="bm-cntr-measure-detail-query-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+</task-flow-registry>

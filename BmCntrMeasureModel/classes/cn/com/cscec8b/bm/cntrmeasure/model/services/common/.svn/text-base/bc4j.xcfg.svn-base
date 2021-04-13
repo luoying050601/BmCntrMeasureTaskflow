@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="cn.com.cscec8b.bm.cntrmeasure.model.services.CntrMeasureAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModel" name="CntrMeasureAMLocal" ApplicationName="cn.com.cscec8b.bm.cntrmeasure.model.services.CntrMeasureAM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="cn.com.cscec8b.bm.cntrmeasure.model.services.CntrMeasureAM"/>
+         <Custom JDBCDataSource="jdbc/STMConnDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModel" name="CntrMeasureAMShared" ApplicationName="cn.com.cscec8b.bm.cntrmeasure.model.services.CntrMeasureAM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="cn.com.cscec8b.bm.cntrmeasure.model.services.CntrMeasureAM"/>
+         <Custom JDBCDataSource="jdbc/STMConnDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="cn.com.cscec8b.bm.cntrmeasure.model.services.AppModuleAM"/>
+</BC4JConfig>

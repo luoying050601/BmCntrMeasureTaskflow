@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="bm-cntr-measure-detail-query-taskflow">
+    <default-activity id="__1">cntrMeasureApplyDetailQuery</default-activity>
+    <managed-bean id="__9">
+      <managed-bean-name id="__11">cntrMeasureApplyDetailQueryBean</managed-bean-name>
+      <managed-bean-class id="__10">cn.com.cscec8b.bm.cntrmeasure.view.backing.CntrMeasureApplyDetailQueryBean</managed-bean-class>
+      <managed-bean-scope id="__8">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="cntrMeasureApplyDetailQuery">
+      <page>/cn/com/cscec8b/bm/cntrmeasure/view/fragments/cntrMeasureApplyDetailQuery.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

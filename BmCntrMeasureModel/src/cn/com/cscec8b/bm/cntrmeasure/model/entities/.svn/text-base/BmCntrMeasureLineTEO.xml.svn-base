@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BmCntrMeasureLineTEO"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="BM.BM_CNTR_MEASURE_LINE_T"
+  AliasName="BmCntrMeasureLineTEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="cn.com.cscec8b.framework.model.common.CustomEntityImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomEntityDefImpl"
+  CollClass="cn.com.cscec8b.framework.model.common.CustomEntityCache"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="CntrMeasureLineId"
+    IsNotNull="true"
+    ColumnName="CNTR_MEASURE_LINE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="SequenceName"
+          Value="bm.BM_CNTR_MEASURE_LINE_S"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="CntrMeasureHeaderId"
+    ColumnName="CNTR_MEASURE_HEADER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LineNum"
+    Precision="30"
+    ColumnName="LINE_NUM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CompletionPercentage"
+    ColumnName="COMPLETION_PERCENTAGE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CompletionPercentage_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CompletionPercentage_Rule_1"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="UnitPrice"
+    ColumnName="UNIT_PRICE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="UnitPrice_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.UnitPrice_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="MeasureAmount"
+    ColumnName="MEASURE_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ObjectVersionNumber"
+    IsNotNull="true"
+    ColumnName="OBJECT_VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    HistoryColumn="VersionHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttributeCategory"
+    Precision="30"
+    ColumnName="ATTRIBUTE_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="240"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute2"
+    Precision="240"
+    ColumnName="ATTRIBUTE2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute3"
+    Precision="240"
+    ColumnName="ATTRIBUTE3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute4"
+    Precision="240"
+    ColumnName="ATTRIBUTE4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute5"
+    Precision="240"
+    ColumnName="ATTRIBUTE5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute6"
+    Precision="240"
+    ColumnName="ATTRIBUTE6"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute7"
+    Precision="240"
+    ColumnName="ATTRIBUTE7"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute8"
+    Precision="240"
+    ColumnName="ATTRIBUTE8"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute9"
+    Precision="240"
+    ColumnName="ATTRIBUTE9"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute10"
+    Precision="240"
+    ColumnName="ATTRIBUTE10"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute11"
+    Precision="240"
+    ColumnName="ATTRIBUTE11"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute12"
+    Precision="240"
+    ColumnName="ATTRIBUTE12"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute13"
+    Precision="240"
+    ColumnName="ATTRIBUTE13"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute14"
+    Precision="240"
+    ColumnName="ATTRIBUTE14"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute15"
+    Precision="240"
+    ColumnName="ATTRIBUTE15"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CntrListLineId"
+    ColumnName="CNTR_LIST_LINE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrListLineId_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrListLineId_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CntrListUomCode"
+    Precision="30"
+    ColumnName="CNTR_LIST_UOM_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrListUomCode_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrListUomCode_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="BudgetQuantity"
+    ColumnName="BUDGET_QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="BudgetQuantity_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.BudgetQuantity_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CumulativeQuantity"
+    ColumnName="CUMULATIVE_QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CumulativeQuantity_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CumulativeQuantity_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="EngineeringQuantity"
+    ColumnName="ENGINEERING_QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="EngineeringQuantity_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.EngineeringQuantity_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="TaskId"
+    Precision="30"
+    ColumnName="TASK_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="TaskId_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.queries.BmCntrMeasureHeaderTVO.TaskIdNoNullText"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="ProductionProAmount"
+    ColumnName="PRODUCTION_PRO_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_MEASURE_LINE_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="BmCntrMeasureHeaderT"
+    Association="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc"
+    AssociationEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc.BmCntrMeasureHeaderT1"
+    AssociationOtherEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc.BmCntrMeasureLineT1"
+    Type="cn.com.cscec8b.framework.model.common.CustomEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="BmCntrMeasureHeaderT1"
+    Association="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc"
+    AssociationEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc.BmCntrMeasureHeaderT1"
+    AssociationOtherEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrMeasureHeaderToLinesAssoc.BmCntrMeasureLineT1"
+    Type="cn.com.cscec8b.framework.model.common.CustomEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="BmCntrMeasureLinePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="BM_CNTR_MEASURE_LINE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrMeasureLineId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622201">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622201"/>
+      <Attr Name="_checkCondition" Value='"CNTR_MEASURE_LINE_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrMeasureLineId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622202">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622202"/>
+      <Attr Name="_checkCondition"
+        Value='"CNTR_MEASURE_HEADER_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrMeasureHeaderId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622203">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622203"/>
+      <Attr Name="_checkCondition" Value='"LINE_NUM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.LineNum"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622204">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622204"/>
+      <Attr Name="_checkCondition" Value='"CNTR_LIST_LINE_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrListLineId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622205">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622205"/>
+      <Attr Name="_checkCondition" Value='"CNTR_LIST_UOM_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CntrListUomCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622206">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622206"/>
+      <Attr Name="_checkCondition" Value='"BUDGET_QUANTITY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.BudgetQuantity"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622207">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622207"/>
+      <Attr Name="_checkCondition" Value='"CUMULATIVE_QUANTITY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CumulativeQuantity"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622208">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622208"/>
+      <Attr Name="_checkCondition" Value='"COMPLETION_PERCENTAGE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CompletionPercentage"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622209">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622209"/>
+      <Attr Name="_checkCondition" Value='"ENGINEERING_QUANTITY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.EngineeringQuantity"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622210">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622210"/>
+      <Attr Name="_checkCondition" Value='"UNIT_PRICE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.UnitPrice"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622211">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622211"/>
+      <Attr Name="_checkCondition" Value='"MEASURE_AMOUNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.MeasureAmount"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622212">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622212"/>
+      <Attr Name="_checkCondition" Value='"TASK_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.TaskId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622213">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622213"/>
+      <Attr Name="_checkCondition" Value='"OBJECT_VERSION_NUMBER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.ObjectVersionNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622214">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622214"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622215">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622215"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622216">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622216"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622217">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622217"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <validation:CompareValidationBean
+    Name="BmCntrMeasureLineTEO_Rule_0"
+    ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrMeasureLineTEO_Rule_0"
+    OnAttribute="CompletionPercentage"
+    OperandType="LITERAL"
+    Inverse="false"
+    CompareType="LESSTHANEQUALTO"
+    CompareValue="100">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="CompletionPercentage"/>
+    </validation:OnAttributes>
+  </validation:CompareValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</Entity>

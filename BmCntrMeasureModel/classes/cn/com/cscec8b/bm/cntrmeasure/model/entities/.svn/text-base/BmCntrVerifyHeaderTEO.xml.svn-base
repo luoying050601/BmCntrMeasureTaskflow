@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BmCntrVerifyHeaderTEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="BM.BM_CNTR_VERIFY_HEADER_T"
+  AliasName="BmCntrVerifyHeaderTEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="cn.com.cscec8b.framework.model.common.CustomEntityImpl"
+  DefClass="cn.com.cscec8b.framework.model.common.CustomEntityDefImpl"
+  CollClass="cn.com.cscec8b.framework.model.common.CustomEntityCache"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="CntrVerifyHeaderId"
+    IsNotNull="true"
+    ColumnName="CNTR_VERIFY_HEADER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="SequenceName"
+          Value="bm.BM_CNTR_VERIFY_HEADER_S"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DocumentNumber"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="DOCUMENT_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="DocumentNumber_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.DocumentNumber_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="ProjectId"
+    IsNotNull="true"
+    ColumnName="PROJECT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CntrId"
+    IsNotNull="true"
+    ColumnName="CNTR_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrId_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrId_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="PreparedBy"
+    IsNotNull="true"
+    ColumnName="PREPARED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PreparedDate"
+    IsNotNull="true"
+    ColumnName="PREPARED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OwerConfirmQuantity"
+    IsNotNull="true"
+    ColumnName="OWER_CONFIRM_QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="OwerConfirmQuantity_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.OwerConfirmQuantity_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="ActualOutput"
+    IsNotNull="true"
+    ColumnName="ACTUAL_OUTPUT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProSubcntrOutput"
+    IsNotNull="true"
+    ColumnName="PRO_SUBCNTR_OUTPUT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OtherSubcntrOutput"
+    IsNotNull="true"
+    ColumnName="OTHER_SUBCNTR_OUTPUT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="OtherSubcntrOutput_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.OtherSubcntrOutput_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CntrVisaConfirmQuantity"
+    IsNotNull="true"
+    ColumnName="CNTR_VISA_CONFIRM_QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrVisaConfirmQuantity_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrVisaConfirmQuantity_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CntrConfirmDate"
+    IsNotNull="true"
+    ColumnName="CNTR_CONFIRM_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrConfirmDate_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrConfirmDate_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CntrPaymentAmount"
+    IsNotNull="true"
+    ColumnName="CNTR_PAYMENT_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrPaymentAmount_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrPaymentAmount_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CntrPaymentDate"
+    IsNotNull="true"
+    ColumnName="CNTR_PAYMENT_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CntrPaymentDate_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrPaymentDate_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="ActualPaymentDate"
+    ColumnName="ACTUAL_PAYMENT_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActualPaymentAmount"
+    ColumnName="ACTUAL_PAYMENT_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ObjectVersionNumber"
+    IsNotNull="true"
+    ColumnName="OBJECT_VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    HistoryColumn="VersionHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttributeCategory"
+    Precision="30"
+    ColumnName="ATTRIBUTE_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="240"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute2"
+    Precision="240"
+    ColumnName="ATTRIBUTE2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute3"
+    Precision="240"
+    ColumnName="ATTRIBUTE3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute4"
+    Precision="240"
+    ColumnName="ATTRIBUTE4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute5"
+    Precision="240"
+    ColumnName="ATTRIBUTE5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute6"
+    Precision="240"
+    ColumnName="ATTRIBUTE6"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute7"
+    Precision="240"
+    ColumnName="ATTRIBUTE7"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute8"
+    Precision="240"
+    ColumnName="ATTRIBUTE8"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute9"
+    Precision="240"
+    ColumnName="ATTRIBUTE9"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute10"
+    Precision="240"
+    ColumnName="ATTRIBUTE10"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute11"
+    Precision="240"
+    ColumnName="ATTRIBUTE11"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute12"
+    Precision="240"
+    ColumnName="ATTRIBUTE12"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute13"
+    Precision="240"
+    ColumnName="ATTRIBUTE13"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute14"
+    Precision="240"
+    ColumnName="ATTRIBUTE14"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute15"
+    Precision="240"
+    ColumnName="ATTRIBUTE15"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="VerifyStartDate"
+    IsNotNull="true"
+    ColumnName="VERIFY_START_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="VerifyStartDate_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.VerifyStartDate_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="VerifyEndDate"
+    IsNotNull="true"
+    ColumnName="VERIFY_END_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="VerifyEndDate_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.VerifyEndDate_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CustomerId"
+    IsNotNull="true"
+    ColumnName="CUSTOMER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="CustomerId_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CustomerId_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="ActualConfirmDate"
+    IsNotNull="true"
+    ColumnName="ACTUAL_CONFIRM_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="ActualConfirmDate_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ActualConfirmDate_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="LaborAmount"
+    IsNotNull="true"
+    ColumnName="LABOR_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="LaborAmount_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.LaborAmount_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="SecurityAmount"
+    IsNotNull="true"
+    ColumnName="SECURITY_AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="SecurityAmount_Rule_0"
+      ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.SecurityAmount_Rule_0"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="CumulativeActualOutput"
+    ColumnName="CUMULATIVE_ACTUAL_OUTPUT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="BM.BM_CNTR_VERIFY_HEADER_T">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="BmCntrVerifyLineT"
+    Association="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrVerifyHeaderToLinesAssoc"
+    AssociationEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrVerifyHeaderToLinesAssoc.BmCntrVerifyLineT"
+    AssociationOtherEnd="cn.com.cscec8b.bm.cntrmeasure.model.entities.associations.BmCntrVerifyHeaderToLinesAssoc.BmCntrVerifyHeaderT"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="BmCntrVerifyHeaderPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="BM_CNTR_VERIFY_HEADER_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrVerifyHeaderId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622441">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622441"/>
+      <Attr Name="_checkCondition" Value='"CNTR_VERIFY_HEADER_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrVerifyHeaderId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622442">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622442"/>
+      <Attr Name="_checkCondition" Value='"DOCUMENT_NUMBER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.DocumentNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622443">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622443"/>
+      <Attr Name="_checkCondition" Value='"PROJECT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ProjectId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622444">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622444"/>
+      <Attr Name="_checkCondition" Value='"CNTR_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622445">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622445"/>
+      <Attr Name="_checkCondition" Value='"CUSTOMER_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CustomerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622446">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622446"/>
+      <Attr Name="_checkCondition" Value='"PREPARED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.PreparedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622447">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622447"/>
+      <Attr Name="_checkCondition" Value='"PREPARED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.PreparedDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622448">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622448"/>
+      <Attr Name="_checkCondition" Value='"OWER_CONFIRM_QUANTITY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.OwerConfirmQuantity"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622449">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622449"/>
+      <Attr Name="_checkCondition" Value='"VERIFY_START_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.VerifyStartDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622450">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622450"/>
+      <Attr Name="_checkCondition" Value='"VERIFY_END_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.VerifyEndDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622451">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622451"/>
+      <Attr Name="_checkCondition" Value='"ACTUAL_OUTPUT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ActualOutput"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622452">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622452"/>
+      <Attr Name="_checkCondition" Value='"PRO_SUBCNTR_OUTPUT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ProSubcntrOutput"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622453">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622453"/>
+      <Attr Name="_checkCondition" Value='"OTHER_SUBCNTR_OUTPUT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.OtherSubcntrOutput"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622454">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622454"/>
+      <Attr Name="_checkCondition"
+        Value='"CNTR_VISA_CONFIRM_QUANTITY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrVisaConfirmQuantity"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622455">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622455"/>
+      <Attr Name="_checkCondition" Value='"CNTR_CONFIRM_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrConfirmDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622456">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622456"/>
+      <Attr Name="_checkCondition" Value='"ACTUAL_CONFIRM_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ActualConfirmDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622457">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622457"/>
+      <Attr Name="_checkCondition" Value='"CNTR_PAYMENT_AMOUNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrPaymentAmount"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622458">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622458"/>
+      <Attr Name="_checkCondition" Value='"LABOR_AMOUNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.LaborAmount"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622459">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622459"/>
+      <Attr Name="_checkCondition" Value='"SECURITY_AMOUNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.SecurityAmount"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622460">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622460"/>
+      <Attr Name="_checkCondition" Value='"CNTR_PAYMENT_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CntrPaymentDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622463">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622463"/>
+      <Attr Name="_checkCondition" Value='"STATUS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.Status"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622464">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622464"/>
+      <Attr Name="_checkCondition" Value='"OBJECT_VERSION_NUMBER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.ObjectVersionNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622465">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622465"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622466">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622466"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622467">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622467"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00622468">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00622468"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <validation:CompareValidationBean
+    Name="BmCntrVerifyHeaderTEO_Rule_0"
+    ResId="cn.com.cscec8b.bm.cntrmeasure.model.entities.BmCntrVerifyHeaderTEO_Rule_0"
+    OnAttribute="VerifyEndDate"
+    OperandType="ATTR"
+    Inverse="false"
+    CompareType="GREATERTHANEQUALTO"
+    CompareValue="VerifyStartDate">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="VerifyEndDate"/>
+      <validation:Item
+        Value="VerifyStartDate"/>
+    </validation:OnAttributes>
+  </validation:CompareValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="cn.com.cscec8b.bm.cntrmeasure.model.BmCntrMeasureModelBundle"/>
+  </ResourceBundle>
+</Entity>
